@@ -1,16 +1,14 @@
 class_name PlayerCamera extends Camera2D
 
-@export var tilemap: TileMapLayer
+@export var tile_map: TileMapLayer
 
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if tilemap:
-		setup_camera_limits(tilemap.get_used_rect())
-	else:
-		printerr("No Tilemap found.")
+	setup_camera_limits(tile_map.get_used_rect())
 
 
-func setup_camera_limits(used_rect: Rect2i) -> void:
-	limit_left = used_rect.position.x
-	limit_right = (used_rect.position.x + used_rect.size.x) * 16
-	limit_bottom = (used_rect.position.y + used_rect.size.y) * 16
+func setup_camera_limits(rect: Rect2i) -> void:
+	limit_left = rect.position.x
+	limit_right = (rect.position.x + rect.size.x) * 16
+	limit_bottom = (rect.position.y + rect.size.y) * 16

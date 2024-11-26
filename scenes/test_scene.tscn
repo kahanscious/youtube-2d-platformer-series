@@ -52,9 +52,10 @@ tile_map_data = PackedByteArray("AAAVAA4AAAAMAAEAAAAVAA8AAAAMAAIAAAAVABAAAAAAAAM
 [node name="Player" parent="." instance=ExtResource("1_8qqrg")]
 position = Vector2(54, 207)
 
-[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tilemap")]
+[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tile_map")]
+position = Vector2(0, -36)
 script = ExtResource("7_l1cak")
-tilemap = NodePath("../../GroundTileMap")
+tile_map = NodePath("../../GroundTileMap")
 
 [node name="WorldBoundary" parent="." instance=ExtResource("8_2w7tn")]
 
