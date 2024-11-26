@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cp1mye327hor0"]
+
+[node name="WorldBoundary" type="StaticBody2D"]
+collision_layer = 256
