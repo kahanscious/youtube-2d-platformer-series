@@ -17,18 +17,18 @@ func exit() -> void:
 
 
 # called every frame during _process
-func process(delta: float) -> State:
+func process(_delta: float) -> State:
 	if player.direction == 0:
 		return idle_state
 	return null
 
 
 # called every physics frame during _physics_process
-func physics(delta: float) -> State:
+func physics(_delta: float) -> State:
 	player.velocity.x = player.direction * player.speed
 
 	if not player.is_on_floor():
-		fall_state
+		return fall_state
 	return null
 
 

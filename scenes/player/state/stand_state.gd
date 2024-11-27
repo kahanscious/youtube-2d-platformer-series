@@ -15,15 +15,17 @@ func exit() -> void:
 
 
 # called every frame during _process
-func process(delta: float) -> State:
+func process(_delta: float) -> State:
+	if player.animation_player.is_playing():
+		return
 	return idle_state
 
 
 # called every physics frame during _physics_process
-func physics(delta: float) -> State:
+func physics(_delta: float) -> State:
 	return null
 
 
 # called when input events occur
-func unhandled_input(event: InputEvent) -> State:
+func unhandled_input(_event: InputEvent) -> State:
 	return null
