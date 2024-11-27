@@ -57,6 +57,8 @@ position = Vector2(0, -36)
 script = ExtResource("7_l1cak")
 tile_map = NodePath("../../GroundTileMap")
 
+[node name="PlayerBullets" type="Node" parent="."]
+
 [node name="WorldBoundary" parent="." instance=ExtResource("8_2w7tn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]

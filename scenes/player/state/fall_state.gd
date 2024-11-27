@@ -14,12 +14,12 @@ func exit() -> void:
 
 
 # called every frame during _process
-func process(delta: float) -> State:
+func process(_delta: float) -> State:
 	return null
 
 
 # called every physics frame during _physics_process
-func physics(delta: float) -> State:
+func physics(_delta: float) -> State:
 	if player.direction:
 		player.velocity.x = lerp(
 			player.velocity.x, player.direction * player.air_speed, player.air_acceleration
@@ -28,7 +28,10 @@ func physics(delta: float) -> State:
 		player.velocity.x = lerp(player.velocity.x, 0.0, player.air_acceleration * 0.5)
 
 	if player.is_on_floor():
-		return idle_state if player.direction == 0 else run_state
+		if player.direction == 0:
+			return idle_state
+		else:
+			return run_state
 	return null
 
 
