@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://beo7wxrsokinl"]
+[gd_scene load_steps=21 format=3 uid="uid://beo7wxrsokinl"]
 
 [ext_resource type="Texture2D" uid="uid://k1k6kd4nme10" path="res://assets/characters/main/male-spritesheet.png" id="1_crv5h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sykx8"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scenes/player/state/run_state.gd" id="5_flptc"]
 [ext_resource type="Script" path="res://scenes/player/state/jump_state.gd" id="6_xyfty"]
 [ext_resource type="Script" path="res://scenes/player/state/fall_state.gd" id="7_bhtrg"]
+[ext_resource type="Script" path="res://scenes/player/state/crouch_state.gd" id="8_t75qs"]
+[ext_resource type="Script" path="res://scenes/player/state/stand_state.gd" id="9_rks4n"]
+[ext_resource type="Script" path="res://scenes/player/state/attack_state.gd" id="10_bbudu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
 size = Vector2(16, 15)
@@ -24,6 +27,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_0jwtm"]
+resource_name = "crouch"
+length = 0.6
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
 }
 
 [sub_resource type="Animation" id="Animation_d4lbk"]
@@ -97,13 +117,50 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_nhv0f"]
+resource_name = "stand"
+length = 0.6
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [27, 26, 25, 24]
+}
+
+[sub_resource type="Animation" id="Animation_rnd8o"]
+resource_name = "attack"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [32, 33, 34]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6bhe"]
 _data = {
 "RESET": SubResource("Animation_72of1"),
+"attack": SubResource("Animation_rnd8o"),
+"crouch": SubResource("Animation_0jwtm"),
 "fall": SubResource("Animation_d4lbk"),
 "idle": SubResource("Animation_cawbc"),
 "jump": SubResource("Animation_n1ryx"),
-"run": SubResource("Animation_khlf6")
+"run": SubResource("Animation_khlf6"),
+"stand": SubResource("Animation_nhv0f")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -141,3 +198,12 @@ script = ExtResource("6_xyfty")
 
 [node name="FallState" type="Node" parent="StateMachine"]
 script = ExtResource("7_bhtrg")
+
+[node name="CrouchState" type="Node" parent="StateMachine"]
+script = ExtResource("8_t75qs")
+
+[node name="StandState" type="Node" parent="StateMachine"]
+script = ExtResource("9_rks4n")
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("10_bbudu")
