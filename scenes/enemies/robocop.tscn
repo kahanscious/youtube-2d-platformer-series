@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4wgn32h7cceu"]
+
+[ext_resource type="Script" path="res://scenes/enemies/robocop.gd" id="1_t5j2c"]
+[ext_resource type="Texture2D" uid="uid://c6pus8pu701yc" path="res://assets/characters/enemies/cop.png" id="2_aw1qn"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox.tscn" id="3_f5kw6"]
+[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox.tscn" id="4_j4vkf"]
+
+[sub_resource type="Animation" id="Animation_oi2to"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_83xnw"]
+resource_name = "idle"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_i4j32"]
+resource_name = "run"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5bdr"]
+_data = {
+"RESET": SubResource("Animation_oi2to"),
+"idle": SubResource("Animation_83xnw"),
+"run": SubResource("Animation_i4j32")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ncoh"]
+size = Vector2(15, 8)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5qap"]
+radius = 12.0
+height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3bju"]
+height = 54.0
+
+[node name="Robocop" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 257
+script = ExtResource("1_t5j2c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_aw1qn")
+hframes = 13
+frame = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n5bdr")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_3ncoh")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_f5kw6")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -25)
+shape = SubResource("CapsuleShape2D_t5qap")
+debug_color = Color(0.172549, 1, 0, 0.298039)
+
+[node name="Hitbox" parent="." instance=ExtResource("4_j4vkf")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -27)
+shape = SubResource("CapsuleShape2D_r3bju")
+debug_color = Color(1, 0, 0, 0.247059)

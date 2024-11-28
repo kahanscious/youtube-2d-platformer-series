@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://beo7wxrsokinl"]
+[gd_scene load_steps=23 format=3 uid="uid://beo7wxrsokinl"]
 
 [ext_resource type="Texture2D" uid="uid://k1k6kd4nme10" path="res://assets/characters/main/male-spritesheet.png" id="1_crv5h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sykx8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/player/state/crouch_state.gd" id="8_t75qs"]
 [ext_resource type="Script" path="res://scenes/player/state/stand_state.gd" id="9_rks4n"]
 [ext_resource type="Script" path="res://scenes/player/state/attack_state.gd" id="10_bbudu"]
+[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox.tscn" id="11_ik7bt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
 size = Vector2(16, 15)
@@ -163,6 +164,10 @@ _data = {
 "stand": SubResource("Animation_nhv0f")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jproi"]
+radius = 5.0
+height = 52.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 256
 script = ExtResource("1_sykx8")
@@ -210,3 +215,11 @@ script = ExtResource("10_bbudu")
 
 [node name="GunMuzzle" type="Marker2D" parent="."]
 position = Vector2(26, -43)
+
+[node name="Hitbox" parent="." instance=ExtResource("11_ik7bt")]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, -26)
+shape = SubResource("CapsuleShape2D_jproi")
+debug_color = Color(0.956863, 0, 0, 0.180392)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dy8n2m62igt4q"]
+[gd_scene load_steps=11 format=4 uid="uid://dy8n2m62igt4q"]
 
 [ext_resource type="Texture2D" uid="uid://btbtiqf7qu4jm" path="res://assets/backgrounds/v1/skyline-a.png" id="1_5m6vj"]
 [ext_resource type="PackedScene" uid="uid://beo7wxrsokinl" path="res://scenes/player/player.tscn" id="1_8qqrg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3kngqd2ups6a" path="res://assets/backgrounds/v1/near-buildings-bg.png" id="3_7ngwy"]
 [ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="7_l1cak"]
 [ext_resource type="PackedScene" uid="uid://cp1mye327hor0" path="res://scenes/levels/world_boundary.tscn" id="8_2w7tn"]
+[ext_resource type="PackedScene" uid="uid://c4wgn32h7cceu" path="res://scenes/enemies/robocop.tscn" id="9_ms7b8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ptqv"]
 normal = Vector2(1, 0)
@@ -65,3 +66,6 @@ tile_map = NodePath("../../GroundTileMap")
 position = Vector2(4, 0)
 shape = SubResource("WorldBoundaryShape2D_1ptqv")
 debug_color = Color(0.945098, 0, 0, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("9_ms7b8")]
+position = Vector2(245, 222)
