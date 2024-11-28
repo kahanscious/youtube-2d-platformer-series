@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4wgn32h7cceu"]
+[gd_scene load_steps=17 format=3 uid="uid://c4wgn32h7cceu"]
 
 [ext_resource type="Script" path="res://scenes/enemies/robocop.gd" id="1_t5j2c"]
 [ext_resource type="Texture2D" uid="uid://c6pus8pu701yc" path="res://assets/characters/enemies/cop.png" id="2_aw1qn"]
-[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox.tscn" id="3_f5kw6"]
-[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox.tscn" id="4_j4vkf"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="3_f5kw6"]
+[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox/hitbox.tscn" id="4_j4vkf"]
+[ext_resource type="PackedScene" uid="uid://dcdp0x7c1re2j" path="res://scenes/components/detection/detection_component.tscn" id="5_rsikd"]
+[ext_resource type="Script" path="res://scenes/enemies/state/enemy_state_machine.gd" id="6_7gmi4"]
+[ext_resource type="Script" path="res://scenes/enemies/state/idle_state.gd" id="7_huf1b"]
+[ext_resource type="Script" path="res://scenes/enemies/state/run_state.gd" id="8_t1bp6"]
 
 [sub_resource type="Animation" id="Animation_oi2to"]
 length = 0.001
@@ -71,14 +75,18 @@ height = 50.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3bju"]
 height = 54.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ju5pa"]
+radius = 149.566
+
 [node name="Robocop" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 257
 script = ExtResource("1_t5j2c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(-30, -64)
 texture = ExtResource("2_aw1qn")
+centered = false
 hframes = 13
 frame = 10
 
@@ -107,3 +115,19 @@ collision_layer = 16
 position = Vector2(0, -27)
 shape = SubResource("CapsuleShape2D_r3bju")
 debug_color = Color(1, 0, 0, 0.247059)
+
+[node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("6_7gmi4")
+
+[node name="IdleState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("7_huf1b")
+
+[node name="RunState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("8_t1bp6")
+
+[node name="DetectionComponent" parent="." instance=ExtResource("5_rsikd")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
+shape = SubResource("CircleShape2D_ju5pa")
+debug_color = Color(0.760784, 0.45098, 0, 0)

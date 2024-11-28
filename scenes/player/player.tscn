@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scenes/player/state/crouch_state.gd" id="8_t75qs"]
 [ext_resource type="Script" path="res://scenes/player/state/stand_state.gd" id="9_rks4n"]
 [ext_resource type="Script" path="res://scenes/player/state/attack_state.gd" id="10_bbudu"]
-[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox.tscn" id="11_ik7bt"]
+[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox/hitbox.tscn" id="11_ik7bt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
 size = Vector2(16, 15)
