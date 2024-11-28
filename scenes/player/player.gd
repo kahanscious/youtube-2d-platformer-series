@@ -26,7 +26,7 @@ const GUN_MUZZLE_OFFSET: int = 26
 
 
 func _ready() -> void:
-	print("Player current health: ", current_health)
+	PlayerManager.player = self
 	state_machine.configure(self)
 	hitbox.take_damage.connect(_on_take_damage)
 
@@ -58,4 +58,3 @@ func set_player_direction() -> void:
 
 func _on_take_damage(amount: int) -> void:
 	current_health -= amount
-	print("Player current health: ", current_health)

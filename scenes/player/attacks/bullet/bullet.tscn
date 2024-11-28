@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player/attacks/bullet/bullet.gd" id="1_2h8lw"]
 [ext_resource type="Texture2D" uid="uid://bopgothvcu605" path="res://assets/fx/player-bullet.png" id="2_8jagw"]
-[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox.tscn" id="3_c42di"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="3_c42di"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ct3d"]
 atlas = ExtResource("2_8jagw")
