@@ -125,9 +125,11 @@ script = ExtResource("7_huf1b")
 [node name="RunState" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("8_t1bp6")
 
-[node name="DetectionComponent" parent="." instance=ExtResource("5_rsikd")]
+[node name="Components" type="Node2D" parent="."]
+
+[node name="DetectionComponent" parent="Components" instance=ExtResource("5_rsikd")]
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/DetectionComponent"]
 shape = SubResource("CircleShape2D_ju5pa")
 debug_color = Color(0.760784, 0.45098, 0, 0)

@@ -1,7 +1,7 @@
 class_name EnemyIdleState extends EnemyState
 
 @onready var run_state: EnemyRunState = $"../RunState"
-@onready var detection_component: DetectionComponent = $"../../DetectionComponent"
+@onready var detection_component: DetectionComponent = $"../../Components/DetectionComponent"
 
 
 func enter() -> void:
