@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://beo7wxrsokinl"]
+[gd_scene load_steps=28 format=3 uid="uid://beo7wxrsokinl"]
 
 [ext_resource type="Texture2D" uid="uid://k1k6kd4nme10" path="res://assets/characters/main/male-spritesheet.png" id="1_crv5h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sykx8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scenes/player/state/attack_state.gd" id="10_bbudu"]
 [ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox/hitbox.tscn" id="11_ik7bt"]
 [ext_resource type="Script" path="res://scenes/player/state/knockback_state.gd" id="11_sfcgf"]
+[ext_resource type="AudioStream" uid="uid://klilt514byk1" path="res://assets/sfx/player-hurt.wav" id="15_0s1iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
 size = Vector2(11, 15)
@@ -82,6 +83,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [20, 21, 22]
+}
+
+[sub_resource type="Animation" id="Animation_r77ir"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [40]
 }
 
 [sub_resource type="Animation" id="Animation_cawbc"]
@@ -153,23 +171,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [27, 26, 25, 24]
-}
-
-[sub_resource type="Animation" id="Animation_r77ir"]
-resource_name = "hurt"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [40]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6bhe"]
@@ -254,8 +255,14 @@ debug_color = Color(0.956863, 0, 0, 0.180392)
 [node name="JumpAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_nn0t0")
 max_polyphony = 4
+bus = &"SFX"
 
 [node name="ShootAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_rx7p2")
+max_polyphony = 5
+bus = &"SFX"
 
 [node name="DamagedAudio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_0s1iw")
+max_polyphony = 3
+bus = &"SFX"
