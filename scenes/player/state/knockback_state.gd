@@ -15,6 +15,7 @@ var knockback_direction: int = 0
 
 func enter() -> void:
 	player.animation_player.play("hurt")
+	player.damaged_audio.play()
 
 	current_knockback_time = knockback_duration
 	player.is_knocked_back = true

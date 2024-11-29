@@ -81,7 +81,7 @@ radius = 149.566
 
 [node name="Robocop" type="CharacterBody2D"]
 collision_layer = 16
-collision_mask = 257
+collision_mask = 256
 script = ExtResource("1_t5j2c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -141,3 +141,5 @@ debug_color = Color(0.760784, 0.45098, 0, 0)
 
 [node name="DamagedAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("9_vbj86")
+max_polyphony = 4
+bus = &"SFX"

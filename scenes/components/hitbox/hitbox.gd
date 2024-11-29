@@ -8,5 +8,4 @@ func _on_area_entered(area: Area2D) -> void:
 		if area.owner is Bullet:
 			var bullet: Bullet = area.owner
 			bullet._destroy()
-		print(area.owner.name, " Hurtbox entered hitbox")
 		take_damage.emit(area.damage)
