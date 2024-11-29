@@ -5,6 +5,7 @@ class_name AttackState extends State
 @onready var fall_state: FallState = $"../FallState"
 @onready var jump_state: JumpState = $"../JumpState"
 @onready var crouch_state: CrouchState = $"../CrouchState"
+@onready var knockback_state: KnockbackState = $"../KnockbackState"
 @onready var bullet_scene: PackedScene = preload("res://scenes/player/attacks/bullet/bullet.tscn")
 
 
@@ -37,6 +38,8 @@ func process(_delta: float) -> State:
 
 # called every physics frame during _physics_process
 func physics(_delta: float) -> State:
+	if player.is_knocked_back:
+		return knockback_state
 	return null
 
 
@@ -55,6 +58,7 @@ func _shoot() -> void:
 		var bullet: Bullet = bullet_scene.instantiate()
 		var bullet_position: Vector2 = player.gun_muzzle.global_position
 
+		player.shoot_audio.play()
 		parent.get_node("PlayerBullets").add_child(bullet)
 		bullet.direction = -1 if player.sprite.flip_h else 1
 		bullet.global_position = bullet_position

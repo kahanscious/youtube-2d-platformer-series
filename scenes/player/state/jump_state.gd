@@ -1,10 +1,12 @@
 class_name JumpState extends State
 
 @onready var fall_state: FallState = $"../FallState"
+@onready var knockback_state: KnockbackState = $"../KnockbackState"
 
 
 # what happens when we enter the state
 func enter() -> void:
+	player.jump_audio.play()
 	player.velocity.y = player.jump_force
 	player.animation_player.play("jump")
 
@@ -29,7 +31,10 @@ func physics(_delta: float) -> State:
 
 	if player.velocity.y >= 0:
 		return fall_state
-		
+
+	if player.is_knocked_back:
+		return knockback_state
+
 	return null
 
 

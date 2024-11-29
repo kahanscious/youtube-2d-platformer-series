@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4wgn32h7cceu"]
+[gd_scene load_steps=18 format=3 uid="uid://c4wgn32h7cceu"]
 
 [ext_resource type="Script" path="res://scenes/enemies/robocop.gd" id="1_t5j2c"]
 [ext_resource type="Texture2D" uid="uid://c6pus8pu701yc" path="res://assets/characters/enemies/cop.png" id="2_aw1qn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/state/enemy_state_machine.gd" id="6_7gmi4"]
 [ext_resource type="Script" path="res://scenes/enemies/state/idle_state.gd" id="7_huf1b"]
 [ext_resource type="Script" path="res://scenes/enemies/state/run_state.gd" id="8_t1bp6"]
+[ext_resource type="AudioStream" uid="uid://07rv5emgneau" path="res://assets/sfx/cop-damaged.wav" id="9_vbj86"]
 
 [sub_resource type="Animation" id="Animation_oi2to"]
 length = 0.001
@@ -102,6 +103,7 @@ shape = SubResource("RectangleShape2D_3ncoh")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_f5kw6")]
 collision_layer = 16
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -25)
@@ -110,6 +112,7 @@ debug_color = Color(0.172549, 1, 0, 0.298039)
 
 [node name="Hitbox" parent="." instance=ExtResource("4_j4vkf")]
 collision_layer = 16
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -27)
@@ -133,3 +136,8 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/DetectionComponent"]
 shape = SubResource("CircleShape2D_ju5pa")
 debug_color = Color(0.760784, 0.45098, 0, 0)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DamagedAudio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_vbj86")

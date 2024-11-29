@@ -5,6 +5,10 @@ class_name Player extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var gun_muzzle: Marker2D = $GunMuzzle
 @onready var hitbox: Hitbox = $Hitbox
+@onready var jump_audio: AudioStreamPlayer = $Audio/JumpAudio
+@onready var shoot_audio: AudioStreamPlayer = $Audio/ShootAudio
+@onready var damaged_audio: AudioStreamPlayer = $Audio/DamagedAudio
+@onready var knockback_state: KnockbackState = $StateMachine/KnockbackState
 
 @export_category("Physics")
 @export var gravity: float = 980.0
@@ -21,6 +25,7 @@ class_name Player extends CharacterBody2D
 @export var current_health: int = 5
 
 var direction: float
+var is_knocked_back: bool = false
 
 const GUN_MUZZLE_OFFSET: int = 26
 
@@ -57,4 +62,8 @@ func set_player_direction() -> void:
 
 
 func _on_take_damage(amount: int) -> void:
+	if is_knocked_back:
+		return
+
 	current_health -= amount
+	state_machine.change_state(knockback_state)

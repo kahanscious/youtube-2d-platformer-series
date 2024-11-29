@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://beo7wxrsokinl"]
+[gd_scene load_steps=27 format=3 uid="uid://beo7wxrsokinl"]
 
 [ext_resource type="Texture2D" uid="uid://k1k6kd4nme10" path="res://assets/characters/main/male-spritesheet.png" id="1_crv5h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sykx8"]
 [ext_resource type="Script" path="res://scenes/player/state/state_machine.gd" id="3_4h3es"]
+[ext_resource type="AudioStream" uid="uid://bfh07on05tc00" path="res://assets/sfx/30_Jump_03.wav" id="3_nn0t0"]
+[ext_resource type="AudioStream" uid="uid://d0vjym5718tjb" path="res://assets/sfx/player-shoot.wav" id="3_rx7p2"]
 [ext_resource type="Script" path="res://scenes/player/state/idle_state.gd" id="4_mvb7k"]
 [ext_resource type="Script" path="res://scenes/player/state/run_state.gd" id="5_flptc"]
 [ext_resource type="Script" path="res://scenes/player/state/jump_state.gd" id="6_xyfty"]
@@ -11,9 +13,10 @@
 [ext_resource type="Script" path="res://scenes/player/state/stand_state.gd" id="9_rks4n"]
 [ext_resource type="Script" path="res://scenes/player/state/attack_state.gd" id="10_bbudu"]
 [ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox/hitbox.tscn" id="11_ik7bt"]
+[ext_resource type="Script" path="res://scenes/player/state/knockback_state.gd" id="11_sfcgf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
-size = Vector2(16, 15)
+size = Vector2(11, 15)
 
 [sub_resource type="Animation" id="Animation_72of1"]
 length = 0.001
@@ -152,12 +155,30 @@ tracks/0/keys = {
 "values": [27, 26, 25, 24]
 }
 
+[sub_resource type="Animation" id="Animation_r77ir"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [40]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6bhe"]
 _data = {
 "RESET": SubResource("Animation_72of1"),
 "attack": SubResource("Animation_rnd8o"),
 "crouch": SubResource("Animation_0jwtm"),
 "fall": SubResource("Animation_d4lbk"),
+"hurt": SubResource("Animation_r77ir"),
 "idle": SubResource("Animation_cawbc"),
 "jump": SubResource("Animation_n1ryx"),
 "run": SubResource("Animation_khlf6"),
@@ -180,7 +201,7 @@ vframes = 6
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7.5)
+position = Vector2(-1.5, -7.5)
 shape = SubResource("RectangleShape2D_l37s7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -213,13 +234,28 @@ script = ExtResource("9_rks4n")
 [node name="AttackState" type="Node" parent="StateMachine"]
 script = ExtResource("10_bbudu")
 
+[node name="KnockbackState" type="Node" parent="StateMachine"]
+script = ExtResource("11_sfcgf")
+
 [node name="GunMuzzle" type="Marker2D" parent="."]
 position = Vector2(26, -43)
 
 [node name="Hitbox" parent="." instance=ExtResource("11_ik7bt")]
 collision_mask = 16
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-2, -26)
 shape = SubResource("CapsuleShape2D_jproi")
 debug_color = Color(0.956863, 0, 0, 0.180392)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_nn0t0")
+max_polyphony = 4
+
+[node name="ShootAudio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_rx7p2")
+
+[node name="DamagedAudio" type="AudioStreamPlayer" parent="Audio"]
