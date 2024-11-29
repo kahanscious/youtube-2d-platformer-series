@@ -1,6 +1,7 @@
 class_name CrouchState extends State
 
 @onready var stand_state: StandState = $"../StandState"
+@onready var knockback_state: KnockbackState = $"../KnockbackState"
 
 
 # what happens when we enter the state
@@ -20,6 +21,8 @@ func process(_delta: float) -> State:
 
 # called every physics frame during _physics_process
 func physics(_delta: float) -> State:
+	if player.is_knocked_back:
+		return knockback_state
 	return null
 
 

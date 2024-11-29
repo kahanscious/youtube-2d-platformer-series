@@ -23,8 +23,8 @@ PlayerManager="*res://_globals/player_manager.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=1440
+window/size/window_height_override=810
 window/stretch/mode="viewport"
 
 [editor_plugins]

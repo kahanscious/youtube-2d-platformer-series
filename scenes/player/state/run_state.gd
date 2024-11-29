@@ -5,6 +5,7 @@ class_name RunState extends State
 @onready var fall_state: FallState = $"../FallState"
 @onready var crouch_state: CrouchState = $"../CrouchState"
 @onready var attack_state: AttackState = $"../AttackState"
+@onready var knockback_state: KnockbackState = $"../KnockbackState"
 
 
 # what happens when we enter the state
@@ -29,6 +30,10 @@ func physics(_delta: float) -> State:
 
 	if not player.is_on_floor():
 		return fall_state
+
+	if player.is_knocked_back:
+		return knockback_state
+
 	return null
 
 

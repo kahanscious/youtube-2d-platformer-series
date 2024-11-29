@@ -2,6 +2,7 @@ class_name FallState extends State
 
 @onready var idle_state: IdleState = $"../IdleState"
 @onready var run_state: RunState = $"../RunState"
+@onready var knockback_state: KnockbackState = $"../KnockbackState"
 
 
 # what happens when we enter the state
@@ -32,6 +33,10 @@ func physics(_delta: float) -> State:
 			return idle_state
 		else:
 			return run_state
+			
+	if player.is_knocked_back:
+		return knockback_state
+		
 	return null
 
 

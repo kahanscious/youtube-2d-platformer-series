@@ -25,8 +25,9 @@ func configure(robocop: Robocop) -> void:
 	if not states:
 		return
 
-	states[0].robocop = robocop
-	states[0].enemy_state_machine = self
+	for state in states:
+		state.robocop = robocop
+		state.enemy_state_machine = self
 
 	change_state(states[0])
 	process_mode = Node.PROCESS_MODE_INHERIT

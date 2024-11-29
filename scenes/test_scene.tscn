@@ -69,3 +69,6 @@ debug_color = Color(0.945098, 0, 0, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("9_ms7b8")]
 position = Vector2(245, 222)
+
+[node name="Robocop" parent="." instance=ExtResource("9_ms7b8")]
+position = Vector2(526, 222)

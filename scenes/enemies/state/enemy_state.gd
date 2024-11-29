@@ -1,7 +1,7 @@
 class_name EnemyState extends Node
 
-static var robocop: Robocop
-static var enemy_state_machine: EnemyStateMachine
+var robocop: Robocop
+var enemy_state_machine: EnemyStateMachine
 
 
 func enter() -> void:
