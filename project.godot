@@ -11,14 +11,17 @@ config_version=5
 [application]
 
 config/name="Youtube 2D Platformer"
-run/main_scene="res://scenes/test_scene.tscn"
+run/main_scene="res://scenes/ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+LevelManager="*res://_globals/level_manager.gd"
+AudioManager="*res://_globals/audio_manager.gd"
 PlayerManager="*res://_globals/player_manager.gd"
 PauseMenu="*res://scenes/ui/pause_menu/pause_menu.tscn"
+SceneTransition="*res://scenes/levels/scene_transition.tscn"
 
 [display]
 
