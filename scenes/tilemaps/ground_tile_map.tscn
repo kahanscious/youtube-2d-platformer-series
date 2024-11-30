@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3topum7y4ygw"]
+[gd_scene load_steps=6 format=3 uid="uid://c3topum7y4ygw"]
 
-[ext_resource type="Texture2D" uid="uid://cek34oyfw1nyl" path="res://assets/environment/tileset.png" id="1_ku8gv"]
+[ext_resource type="Texture2D" uid="uid://cek34oyfw1nyl" path="res://assets/environment/v1-v2/tileset.png" id="1_ku8gv"]
+[ext_resource type="Texture2D" uid="uid://cgguejvpaoqwu" path="res://assets/environment/v1-v2/props/hotel-sign.png" id="2_wio0p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0v8ir"]
 texture = ExtResource("1_ku8gv")
@@ -291,10 +292,16 @@ texture = ExtResource("1_ku8gv")
 16:7/0 = 0
 16:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wa6vo"]
+texture = ExtResource("2_wio0p")
+0:0/size_in_atlas = Vector2i(4, 2)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_jkign"]
 physics_layer_0/collision_layer = 256
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_0v8ir")
+sources/1 = SubResource("TileSetAtlasSource_wa6vo")
 
 [node name="GroundTileMap" type="TileMapLayer"]
 tile_set = SubResource("TileSet_jkign")
