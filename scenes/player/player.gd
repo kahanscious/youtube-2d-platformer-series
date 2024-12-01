@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 @onready var shoot_audio: AudioStreamPlayer = $Audio/ShootAudio
 @onready var damaged_audio: AudioStreamPlayer = $Audio/DamagedAudio
 @onready var knockback_state: KnockbackState = $StateMachine/KnockbackState
+@onready var player_camera: PlayerCamera = $PlayerCamera
 
 @export_category("Physics")
 @export var gravity: float = 980.0
@@ -66,4 +67,6 @@ func _on_take_damage(amount: int) -> void:
 		return
 
 	current_health -= amount
+	player_camera.configure_shake(Utils.ShakeType.MEDIUM)
+	player_camera.add_trauma(0.6)
 	state_machine.change_state(knockback_state)

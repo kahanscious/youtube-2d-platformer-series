@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://beo7wxrsokinl"]
+[gd_scene load_steps=29 format=3 uid="uid://beo7wxrsokinl"]
 
 [ext_resource type="Texture2D" uid="uid://k1k6kd4nme10" path="res://assets/characters/main/male-spritesheet.png" id="1_crv5h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sykx8"]
+[ext_resource type="PackedScene" uid="uid://dk65dd05j0i20" path="res://scenes/player/player_camera.tscn" id="2_let6a"]
 [ext_resource type="Script" path="res://scenes/player/state/state_machine.gd" id="3_4h3es"]
 [ext_resource type="AudioStream" uid="uid://bfh07on05tc00" path="res://assets/sfx/30_Jump_03.wav" id="3_nn0t0"]
 [ext_resource type="AudioStream" uid="uid://d0vjym5718tjb" path="res://assets/sfx/player-shoot.wav" id="3_rx7p2"]
@@ -193,6 +194,8 @@ height = 52.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 256
 script = ExtResource("1_sykx8")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("2_let6a")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
