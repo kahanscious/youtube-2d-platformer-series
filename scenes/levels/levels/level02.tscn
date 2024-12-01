@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://ps1tqg65ytk8"]
+[gd_scene load_steps=6 format=4 uid="uid://ps1tqg65ytk8"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_owwbf"]
 [ext_resource type="Texture2D" uid="uid://dumu0ydm4gyrc" path="res://assets/backgrounds/caves/background.png" id="2_3dp6f"]
 [ext_resource type="Texture2D" uid="uid://bwwg1jf5lm63u" path="res://assets/backgrounds/caves/middleground.png" id="3_5mr25"]
 [ext_resource type="PackedScene" uid="uid://beubvxvthope0" path="res://scenes/tilemaps/caves.tscn" id="4_5dwhw"]
 [ext_resource type="PackedScene" uid="uid://beo7wxrsokinl" path="res://scenes/player/player.tscn" id="6_50e7f"]
-[ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="7_gq887"]
 
 [node name="Level02" type="Node2D"]
 script = ExtResource("1_owwbf")
@@ -40,10 +39,5 @@ tile_map_data = PackedByteArray("AAAAAA8AAAAGAAYAAAAAABAAAAAGAAcAAAABAA8AAAAGAAY
 
 [node name="Player" parent="." instance=ExtResource("6_50e7f")]
 position = Vector2(39, 230)
-
-[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tile_map")]
-position = Vector2(0, -36)
-script = ExtResource("7_gq887")
-tile_map = NodePath("../../CavesTilemap")
 
 [node name="PlayerBullets" type="Node" parent="."]

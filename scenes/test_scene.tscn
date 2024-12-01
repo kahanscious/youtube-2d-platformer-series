@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dy8n2m62igt4q"]
+[gd_scene load_steps=10 format=4 uid="uid://dy8n2m62igt4q"]
 
 [ext_resource type="Texture2D" uid="uid://btbtiqf7qu4jm" path="res://assets/backgrounds/v1/skyline-a.png" id="1_5m6vj"]
 [ext_resource type="PackedScene" uid="uid://beo7wxrsokinl" path="res://scenes/player/player.tscn" id="1_8qqrg"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c3topum7y4ygw" path="res://scenes/tilemaps/ground_tile_map.tscn" id="2_c2fj7"]
 [ext_resource type="Texture2D" uid="uid://bpqluro1mgxyc" path="res://assets/backgrounds/v1/buildings-bg.png" id="2_k7l57"]
 [ext_resource type="Texture2D" uid="uid://d3kngqd2ups6a" path="res://assets/backgrounds/v1/near-buildings-bg.png" id="3_7ngwy"]
-[ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="7_l1cak"]
 [ext_resource type="PackedScene" uid="uid://cp1mye327hor0" path="res://scenes/levels/world_boundary.tscn" id="8_2w7tn"]
 [ext_resource type="PackedScene" uid="uid://c4wgn32h7cceu" path="res://scenes/enemies/robocop.tscn" id="9_ms7b8"]
 
@@ -52,11 +51,6 @@ tile_map_data = PackedByteArray("AAAVAA4AAAAMAAEAAAAVAA8AAAAMAAIAAAAVABAAAAAAAAM
 
 [node name="Player" parent="." instance=ExtResource("1_8qqrg")]
 position = Vector2(39, 230)
-
-[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tile_map")]
-position = Vector2(0, -36)
-script = ExtResource("7_l1cak")
-tile_map = NodePath("../../GroundTileMap")
 
 [node name="PlayerBullets" type="Node" parent="."]
 

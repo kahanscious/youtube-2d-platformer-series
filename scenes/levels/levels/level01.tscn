@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://kab2vjgld4ub"]
+[gd_scene load_steps=12 format=4 uid="uid://kab2vjgld4ub"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_1m3ba"]
 [ext_resource type="Texture2D" uid="uid://ca64ykdg5v4gu" path="res://assets/backgrounds/v2/back.png" id="2_75ell"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dve8vwbu8w6hy" path="res://assets/backgrounds/v2/front.png" id="4_dues4"]
 [ext_resource type="PackedScene" uid="uid://cyba2gbtu8xmq" path="res://scenes/tilemaps/v_2_ground_tile_map.tscn" id="5_8a6ta"]
 [ext_resource type="PackedScene" uid="uid://beo7wxrsokinl" path="res://scenes/player/player.tscn" id="6_v1vry"]
-[ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="7_u1vuf"]
 [ext_resource type="PackedScene" uid="uid://cp1mye327hor0" path="res://scenes/levels/world_boundary.tscn" id="8_4i1x1"]
 [ext_resource type="PackedScene" uid="uid://c3pjfqucmfamg" path="res://scenes/levels/level_transition.tscn" id="9_btnq7"]
 
@@ -62,11 +61,6 @@ tile_map_data = PackedByteArray("AAACAA8AAAAIAAsAAAADAA8AAAAIAAsAAAAEAA8AAAAHAAs
 
 [node name="Player" parent="." instance=ExtResource("6_v1vry")]
 position = Vector2(39, 230)
-
-[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("tile_map")]
-position = Vector2(0, -36)
-script = ExtResource("7_u1vuf")
-tile_map = NodePath("../../V2GroundTileMap")
 
 [node name="PlayerBullets" type="Node" parent="."]
 
