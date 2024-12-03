@@ -22,6 +22,7 @@ AudioManager="*res://_globals/audio_manager.gd"
 PlayerManager="*res://_globals/player_manager.gd"
 PauseMenu="*res://scenes/ui/pause_menu/pause_menu.tscn"
 SceneTransition="*res://scenes/levels/scene_transition.tscn"
+DeathMenu="*res://scenes/ui/death_menu/death_menu.tscn"
 
 [display]
 

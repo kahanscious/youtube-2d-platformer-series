@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://214jyboj247s"]
+
+[ext_resource type="Script" path="res://scenes/levels/death_boundary.gd" id="1_xxqii"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sneyd"]
+
+[node name="DeathBoundary" type="Area2D"]
+script = ExtResource("1_xxqii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_sneyd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
