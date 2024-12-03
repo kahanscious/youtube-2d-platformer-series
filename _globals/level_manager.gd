@@ -3,6 +3,8 @@ extends Node
 signal level_load_started
 signal level_load_finished
 
+const STARTING_LEVEL_PATH: String = "res://scenes/levels/levels/test_scene.tscn"
+
 var current_level: Level
 var next_level: Level
 

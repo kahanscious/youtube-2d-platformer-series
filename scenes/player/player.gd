@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal player_died
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
@@ -10,6 +12,7 @@ class_name Player extends CharacterBody2D
 @onready var damaged_audio: AudioStreamPlayer = $Audio/DamagedAudio
 @onready var knockback_state: KnockbackState = $StateMachine/KnockbackState
 @onready var player_camera: PlayerCamera = $PlayerCamera
+@onready var health_bar: TextureProgressBar = $HealthCanvasLayer/HealthBar
 
 @export_category("Physics")
 @export var gravity: float = 980.0
@@ -35,6 +38,9 @@ func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.configure(self)
 	hitbox.take_damage.connect(_on_take_damage)
+
+	health_bar.value = current_health
+	health_bar.max_value = max_health
 
 
 func _process(_delta: float) -> void:
@@ -63,10 +69,19 @@ func set_player_direction() -> void:
 
 
 func _on_take_damage(amount: int) -> void:
+	health_bar.value -= amount
+	current_health -= amount
+
+	if current_health <= 0:
+		die()
+
 	if is_knocked_back:
 		return
 
-	current_health -= amount
 	player_camera.configure_shake(Utils.ShakeType.MEDIUM)
 	player_camera.add_trauma(0.6)
 	state_machine.change_state(knockback_state)
+
+
+func die() -> void:
+	player_died.emit()
