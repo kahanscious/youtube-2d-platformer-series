@@ -2,11 +2,13 @@ class_name EnemyIdleState extends EnemyState
 
 @onready var run_state: EnemyRunState = $"../RunState"
 @onready var detection_component: DetectionComponent = $"../../Components/DetectionComponent"
+@onready var death_state: EnemyDeathState = $"../DeathState"
 
 
 func enter() -> void:
-	robocop.animation_player.play("idle")
-	robocop.velocity.x = 0
+	enemy.animation_player.play("idle")
+	enemy.velocity.x = 0
+
 	detection_component.player_entered.connect(_on_player_entered)
 
 

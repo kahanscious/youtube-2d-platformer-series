@@ -2,10 +2,12 @@ class_name EnemyRunState extends EnemyState
 
 @onready var idle_state: EnemyIdleState = $"../IdleState"
 @onready var detection_component: DetectionComponent = $"../../Components/DetectionComponent"
+@onready var death_state: EnemyDeathState = $"../DeathState"
 
 
 func enter() -> void:
-	robocop.animation_player.play("run")
+	enemy.animation_player.play("run")
+
 	detection_component.player_exited.connect(_on_player_exit)
 
 
@@ -28,7 +30,7 @@ func _on_player_exit() -> void:
 
 
 func _handle_running() -> void:
-	if robocop.direction:
-		robocop.velocity.x = robocop.direction * robocop.speed
+	if enemy.direction:
+		enemy.velocity.x = enemy.direction * enemy.speed
 	else:
-		robocop.velocity.x = move_toward(robocop.velocity.x, 0, robocop.speed)
+		enemy.velocity.x = move_toward(enemy.velocity.x, 0, enemy.speed)

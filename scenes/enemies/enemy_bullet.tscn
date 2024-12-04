@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://vlidaxylxwye"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_bullet.gd" id="1_be3ii"]
+[ext_resource type="Texture2D" uid="uid://dfknjhbnb1lx7" path="res://assets/fx/shot-hit.png" id="1_py8d8"]
+[ext_resource type="Texture2D" uid="uid://devchk2v3jbsa" path="res://assets/fx/shot.png" id="2_137oy"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="3_jj3mw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4d3q"]
+atlas = ExtResource("1_py8d8")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30eco"]
+atlas = ExtResource("1_py8d8")
+region = Rect2(15, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exlsf"]
+atlas = ExtResource("1_py8d8")
+region = Rect2(30, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fedh"]
+atlas = ExtResource("1_py8d8")
+region = Rect2(45, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf7a7"]
+atlas = ExtResource("2_137oy")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvgm8"]
+atlas = ExtResource("2_137oy")
+region = Rect2(15, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ifxl"]
+atlas = ExtResource("2_137oy")
+region = Rect2(30, 0, 15, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3q7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4d3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30eco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exlsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fedh")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf7a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvgm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ifxl")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhebm"]
+size = Vector2(7, 2)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_be3ii")
+bullet_speed = 400.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n3q7r")
+animation = &"shoot"
+autoplay = "shoot"
+flip_h = true
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_jj3mw")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_mhebm")

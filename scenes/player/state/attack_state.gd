@@ -54,11 +54,11 @@ func unhandled_input(event: InputEvent) -> State:
 
 func _shoot() -> void:
 	var parent: Node2D = owner.get_parent()
-	if parent is Level and parent.has_node("PlayerBullets"):
+	if owner is Player and owner.has_node("Bullets"):
 		var bullet: Bullet = bullet_scene.instantiate()
 		var bullet_position: Vector2 = player.gun_muzzle.global_position
 
 		player.shoot_audio.play()
-		parent.get_node("PlayerBullets").add_child(bullet)
+		player.get_node("Bullets").add_child(bullet)
 		bullet.direction = -1 if player.sprite.flip_h else 1
 		bullet.global_position = bullet_position

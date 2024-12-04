@@ -3,6 +3,7 @@ class_name EnemyStateMachine extends Node
 var states: Array[EnemyState] = []
 var current_state: EnemyState
 var previous_state: EnemyState
+var locked: bool = false
 
 
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	change_state(current_state.physics(delta))
 
 
-func configure(robocop: Robocop) -> void:
+func configure(enemy: Enemy) -> void:
 	for child in get_children():
 		if child is EnemyState:
 			states.append(child)
@@ -26,7 +27,7 @@ func configure(robocop: Robocop) -> void:
 		return
 
 	for state in states:
-		state.robocop = robocop
+		state.enemy = enemy
 		state.enemy_state_machine = self
 
 	change_state(states[0])
@@ -34,7 +35,7 @@ func configure(robocop: Robocop) -> void:
 
 
 func change_state(new_state: EnemyState) -> void:
-	if new_state == null or new_state == current_state:
+	if new_state == null or new_state == current_state or locked:
 		return
 
 	if current_state:
@@ -43,3 +44,7 @@ func change_state(new_state: EnemyState) -> void:
 	previous_state = current_state
 	current_state = new_state
 	current_state.enter()
+
+
+func lock_state() -> void:
+	locked = true

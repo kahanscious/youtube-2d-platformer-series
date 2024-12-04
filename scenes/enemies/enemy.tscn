@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://shod3rg7svif"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_mwjc5"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="2_qrj38"]
+[ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox/hitbox.tscn" id="3_61g3m"]
+[ext_resource type="Script" path="res://scenes/enemies/state/enemy_state_machine.gd" id="4_6ux3d"]
+[ext_resource type="PackedScene" uid="uid://dcdp0x7c1re2j" path="res://scenes/components/detection/detection_component.tscn" id="8_qg5m0"]
+
+[sub_resource type="Animation" id="Animation_lkbke"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_a03fb"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_ewh0v"]
+resource_name = "run"
+
+[sub_resource type="Animation" id="Animation_sx2ca"]
+resource_name = "shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_481yu"]
+_data = {
+"death": SubResource("Animation_lkbke"),
+"idle": SubResource("Animation_a03fb"),
+"run": SubResource("Animation_ewh0v"),
+"shoot": SubResource("Animation_sx2ca")
+}
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_mwjc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_481yu")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_qrj38")]
+collision_layer = 16
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_61g3m")]
+collision_layer = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("4_6ux3d")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="DetectionComponent" parent="Components" instance=ExtResource("8_qg5m0")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/DetectionComponent"]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DamagedAudio" type="AudioStreamPlayer" parent="Audio"]
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="Bullets" type="Node" parent="."]

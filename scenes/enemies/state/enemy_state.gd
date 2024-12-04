@@ -1,6 +1,6 @@
 class_name EnemyState extends Node
 
-var robocop: Robocop
+var enemy: Enemy
 var enemy_state_machine: EnemyStateMachine
 
 

@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://derq8tii1qvx2"]
+
+[ext_resource type="Texture2D" uid="uid://ppq4wm5kt0t" path="res://assets/characters/enemies/turret.png" id="1_cd67d"]
+[ext_resource type="Script" path="res://scenes/enemies/turret.gd" id="1_sbjta"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="2_epeqp"]
+[ext_resource type="PackedScene" uid="uid://dcdp0x7c1re2j" path="res://scenes/components/detection/detection_component.tscn" id="7_6minh"]
+
+[sub_resource type="Animation" id="Animation_npvve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_iho6o"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ftncr"]
+resource_name = "shoot_left"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gasg"]
+_data = {
+"RESET": SubResource("Animation_npvve"),
+"idle": SubResource("Animation_iho6o"),
+"shoot": SubResource("Animation_ftncr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th58d"]
+size = Vector2(17, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je1it"]
+size = Vector2(20, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8regx"]
+size = Vector2(343, 24)
+
+[node name="Turret" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_sbjta")
+bullet_speed = 600.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-12, -23)
+texture = ExtResource("1_cd67d")
+centered = false
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5gasg")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -3.5)
+shape = SubResource("RectangleShape2D_th58d")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_epeqp")]
+collision_layer = 16
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_je1it")
+debug_color = Color(0.172549, 1, 0, 0.298039)
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="DetectionComponent" parent="Components" instance=ExtResource("7_6minh")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/DetectionComponent"]
+position = Vector2(0.5, -11)
+shape = SubResource("RectangleShape2D_8regx")
+debug_color = Color(0.760784, 0.45098, 0, 0)
+
+[node name="GunMuzzle" type="Marker2D" parent="."]
+position = Vector2(-7, -19)
+
+[node name="Bullets" type="Node" parent="."]
