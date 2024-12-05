@@ -5,6 +5,10 @@ class_name Bullet extends Area2D
 var direction: int = 1
 
 
+func _ready() -> void:
+	pass
+
+
 func _process(delta: float) -> void:
 	position.x += bullet_speed * delta * direction
 

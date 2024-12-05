@@ -13,6 +13,7 @@ signal player_died
 @onready var knockback_state: KnockbackState = $StateMachine/KnockbackState
 @onready var player_camera: PlayerCamera = $PlayerCamera
 @onready var health_bar: TextureProgressBar = $HealthCanvasLayer/HealthBar
+@onready var bullets: Node = $Bullets
 
 @export_category("Physics")
 @export var gravity: float = 980.0
@@ -47,6 +48,7 @@ func _process(_delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 	if direction:
 		set_player_direction()
+	manage_bullets()
 
 
 func _physics_process(delta: float) -> void:
@@ -85,3 +87,9 @@ func _on_take_damage(amount: int) -> void:
 
 func die() -> void:
 	player_died.emit()
+
+
+func manage_bullets() -> void:
+	for bullet: Bullet in bullets.get_children():
+		if abs(bullet.global_position.x - PlayerManager.player.global_position.x) > 500:
+			bullet._destroy()

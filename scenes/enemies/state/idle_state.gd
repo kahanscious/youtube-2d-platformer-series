@@ -5,8 +5,8 @@ class_name EnemyIdleState extends EnemyState
 
 
 func enter() -> void:
-	robocop.animation_player.play("idle")
-	robocop.velocity.x = 0
+	enemy.animation_player.play("idle")
+	enemy.velocity.x = 0
 	detection_component.player_entered.connect(_on_player_entered)
 
 

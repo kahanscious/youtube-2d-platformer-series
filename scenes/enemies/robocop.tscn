@@ -1,14 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4wgn32h7cceu"]
+[gd_scene load_steps=22 format=3 uid="uid://c4wgn32h7cceu"]
 
 [ext_resource type="Script" path="res://scenes/enemies/robocop.gd" id="1_t5j2c"]
 [ext_resource type="Texture2D" uid="uid://c6pus8pu701yc" path="res://assets/characters/enemies/cop.png" id="2_aw1qn"]
 [ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="3_f5kw6"]
+[ext_resource type="AudioStream" uid="uid://byshbiitfefqy" path="res://assets/sfx/69_Enemy_death_01.wav" id="3_iqsfu"]
 [ext_resource type="PackedScene" uid="uid://bi5v61wjj6cah" path="res://scenes/components/hitbox/hitbox.tscn" id="4_j4vkf"]
 [ext_resource type="PackedScene" uid="uid://dcdp0x7c1re2j" path="res://scenes/components/detection/detection_component.tscn" id="5_rsikd"]
 [ext_resource type="Script" path="res://scenes/enemies/state/enemy_state_machine.gd" id="6_7gmi4"]
 [ext_resource type="Script" path="res://scenes/enemies/state/idle_state.gd" id="7_huf1b"]
+[ext_resource type="Script" path="res://scenes/enemies/death_state.gd" id="8_b1wec"]
 [ext_resource type="Script" path="res://scenes/enemies/state/run_state.gd" id="8_t1bp6"]
 [ext_resource type="AudioStream" uid="uid://07rv5emgneau" path="res://assets/sfx/cop-damaged.wav" id="9_vbj86"]
+[ext_resource type="Texture2D" uid="uid://csabwm2byj1sj" path="res://assets/fx/enemy-explosion.png" id="11_sdyed"]
 
 [sub_resource type="Animation" id="Animation_oi2to"]
 length = 0.001
@@ -23,6 +26,122 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hurtbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_onxws"]
+resource_name = "death"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/DeathAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.01942,
+"start_offset": 0.0,
+"stream": ExtResource("3_iqsfu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hurtbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_83xnw"]
@@ -62,6 +181,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n5bdr"]
 _data = {
 "RESET": SubResource("Animation_oi2to"),
+"death": SubResource("Animation_onxws"),
 "idle": SubResource("Animation_83xnw"),
 "run": SubResource("Animation_i4j32")
 }
@@ -90,6 +210,12 @@ texture = ExtResource("2_aw1qn")
 centered = false
 hframes = 13
 frame = 10
+
+[node name="DeathSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("11_sdyed")
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -128,6 +254,9 @@ script = ExtResource("7_huf1b")
 [node name="RunState" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("8_t1bp6")
 
+[node name="DeathState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("8_b1wec")
+
 [node name="Components" type="Node2D" parent="."]
 
 [node name="DetectionComponent" parent="Components" instance=ExtResource("5_rsikd")]
@@ -143,3 +272,7 @@ debug_color = Color(0.760784, 0.45098, 0, 0)
 stream = ExtResource("9_vbj86")
 max_polyphony = 4
 bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="Bullets" type="Node" parent="."]

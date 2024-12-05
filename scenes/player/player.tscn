@@ -286,3 +286,5 @@ value = 50.0
 texture_under = ExtResource("17_fwu0u")
 texture_over = ExtResource("18_rc62r")
 texture_progress = ExtResource("19_my5ri")
+
+[node name="Bullets" type="Node" parent="."]
