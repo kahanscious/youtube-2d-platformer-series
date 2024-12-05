@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1rgbgr7vb8xc"]
+
+[ext_resource type="Script" path="res://scenes/enemies/turret/turret.gd" id="1_ngb6x"]
+[ext_resource type="PackedScene" uid="uid://dcdp0x7c1re2j" path="res://scenes/components/detection/detection_component.tscn" id="2_irfge"]
+[ext_resource type="Texture2D" uid="uid://ppq4wm5kt0t" path="res://assets/characters/enemies/turret.png" id="3_tdud7"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="4_0r7j2"]
+
+[sub_resource type="Animation" id="Animation_nt48o"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_7j1y7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1bmay"]
+resource_name = "shoot"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2u3o"]
+_data = {
+"RESET": SubResource("Animation_7j1y7"),
+"idle": SubResource("Animation_nt48o"),
+"shoot": SubResource("Animation_1bmay")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sshyy"]
+size = Vector2(282, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr0rr"]
+size = Vector2(17, 20)
+
+[node name="Turret" type="CharacterBody2D"]
+script = ExtResource("1_ngb6x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q2u3o")
+}
+
+[node name="DetectionComponent" parent="." instance=ExtResource("2_irfge")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_sshyy")
+
+[node name="GunMuzzle" type="Marker2D" parent="."]
+position = Vector2(-8, -19)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("3_tdud7")
+hframes = 6
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_0r7j2")]
+collision_layer = 16
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, -10)
+shape = SubResource("RectangleShape2D_jr0rr")
+
+[node name="Bullets" type="Node" parent="."]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://dc2l7fs2avue8"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_bullet.gd" id="1_psqru"]
+[ext_resource type="Texture2D" uid="uid://devchk2v3jbsa" path="res://assets/fx/shot.png" id="2_injrn"]
+[ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="3_523nd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygb8l"]
+atlas = ExtResource("2_injrn")
+region = Rect2(0, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h483"]
+atlas = ExtResource("2_injrn")
+region = Rect2(15, 0, 15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfabh"]
+atlas = ExtResource("2_injrn")
+region = Rect2(30, 0, 15, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltlur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygb8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h483")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfabh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vilqu"]
+size = Vector2(6, 4)
+
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_psqru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ltlur")
+frame = 1
+frame_progress = 0.461451
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_523nd")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_vilqu")

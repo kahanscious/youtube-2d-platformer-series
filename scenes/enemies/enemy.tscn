@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtq08k6q1wf1w"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_4oubo"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_4oubo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Bullets" type="Node" parent="."]

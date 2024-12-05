@@ -48,7 +48,9 @@ func physics(delta: float) -> State:
 	var reduction: float = knockback_force * knockback_reduction_speeed * delta
 
 	if player.velocity.x > 0:
-		player.velocity.x = max(0, player.velocity.x - reduction)
+		player.velocity.x = (
+			max(0, player.velocity.x - reduction) * (-1 if player.direction < 0 else 1)
+		)
 	else:
 		player.velocity.x = min(0, player.velocity.x + reduction)
 
