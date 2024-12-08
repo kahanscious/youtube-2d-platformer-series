@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3topum7y4ygw" path="res://scenes/tilemaps/ground_tile_map.tscn" id="5_bcsn3"]
 [ext_resource type="PackedScene" uid="uid://cp1mye327hor0" path="res://scenes/levels/world_boundary.tscn" id="7_ll0rk"]
 [ext_resource type="PackedScene" uid="uid://214jyboj247s" path="res://scenes/levels/death_boundary.tscn" id="8_h3g4j"]
-[ext_resource type="PackedScene" uid="uid://c4wgn32h7cceu" path="res://scenes/enemies/robocop.tscn" id="8_mraoh"]
+[ext_resource type="PackedScene" uid="uid://c4wgn32h7cceu" path="res://scenes/enemies/robocop/robocop.tscn" id="8_mraoh"]
 [ext_resource type="PackedScene" uid="uid://c1rgbgr7vb8xc" path="res://scenes/enemies/turret/turret.tscn" id="9_uombq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ptqv"]
@@ -59,10 +59,6 @@ debug_color = Color(0.945098, 0, 0, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("8_mraoh")]
 position = Vector2(245, 222)
-speed = 50.0
-gravity = 980.0
-max_health = 3
-current_health = 3
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 unique_name_in_owner = true
