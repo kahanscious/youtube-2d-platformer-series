@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dcdp0x7c1re2j" path="res://scenes/components/detection/detection_component.tscn" id="5_rsikd"]
 [ext_resource type="Script" path="res://scenes/enemies/state/enemy_state_machine.gd" id="6_7gmi4"]
 [ext_resource type="Script" path="res://scenes/enemies/state/idle_state.gd" id="7_huf1b"]
-[ext_resource type="Script" path="res://scenes/enemies/death_state.gd" id="8_b1wec"]
+[ext_resource type="Script" path="res://scenes/enemies/state/death_state.gd" id="8_b1wec"]
 [ext_resource type="Script" path="res://scenes/enemies/state/run_state.gd" id="8_t1bp6"]
 [ext_resource type="AudioStream" uid="uid://07rv5emgneau" path="res://assets/sfx/cop-damaged.wav" id="9_vbj86"]
 [ext_resource type="Texture2D" uid="uid://csabwm2byj1sj" path="res://assets/fx/enemy-explosion.png" id="11_sdyed"]

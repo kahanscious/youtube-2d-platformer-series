@@ -4,23 +4,23 @@ class_name JumpState extends State
 @onready var knockback_state: KnockbackState = $"../KnockbackState"
 
 
-# what happens when we enter the state
 func enter() -> void:
 	player.jump_audio.play()
 	player.velocity.y = player.jump_force
 	player.animation_player.play("jump")
+
+	if player.is_on_floor():
+		get_tree().create_timer(0.2).timeout.connect(func(): player.can_double_jump = true)
 
 
 func exit() -> void:
 	pass
 
 
-# called every frame during _process
 func process(_delta: float) -> State:
 	return null
 
 
-# called every physics frame during _physics_process
 func physics(_delta: float) -> State:
 	if player.direction:
 		player.velocity.x = lerp(
@@ -38,6 +38,11 @@ func physics(_delta: float) -> State:
 	return null
 
 
-# called when input events occur
-func unhandled_input(_event: InputEvent) -> State:
+func unhandled_input(event: InputEvent) -> State:
+	if event.is_action_pressed("jump"):
+		if player.has_double_jump and player.can_double_jump and not player.is_on_floor():
+			player.can_double_jump = false
+			player.velocity.y = player.jump_force
+			player.jump_audio.play()
+			return self
 	return null

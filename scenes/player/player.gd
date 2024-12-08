@@ -14,6 +14,7 @@ signal player_died
 @onready var player_camera: PlayerCamera = $PlayerCamera
 @onready var health_bar: TextureProgressBar = $HealthCanvasLayer/HealthBar
 @onready var bullets: Node = $Bullets
+@onready var xp_bar: TextureProgressBar = $XPCanvasLayer/XPBar
 
 @export_category("Physics")
 @export var gravity: float = 980.0
@@ -24,6 +25,10 @@ signal player_died
 
 @export_category("Attack")
 @export var max_bullets: int = 3
+
+@export_category("Abilities")
+@export var has_double_jump: bool = false
+@export var can_double_jump: bool = false
 
 @export_category("Health")
 @export var max_health: int = 5
@@ -43,6 +48,8 @@ func _ready() -> void:
 	health_bar.value = current_health
 	health_bar.max_value = max_health
 
+	XPManager.initialize(self)
+
 
 func _process(_delta: float) -> void:
 	direction = Input.get_axis("left", "right")
@@ -54,6 +61,8 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		can_double_jump = has_double_jump
 
 	move_and_slide()
 

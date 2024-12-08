@@ -14,7 +14,7 @@ func _ready() -> void:
 	direction = 1.0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_direction()
 
 
