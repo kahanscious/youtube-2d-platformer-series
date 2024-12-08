@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c4wgn32h7cceu"]
 
-[ext_resource type="Script" path="res://scenes/enemies/robocop.gd" id="1_t5j2c"]
+[ext_resource type="Script" path="res://scenes/enemies/robocop/robocop.gd" id="1_t5j2c"]
 [ext_resource type="Texture2D" uid="uid://c6pus8pu701yc" path="res://assets/characters/enemies/cop.png" id="2_aw1qn"]
 [ext_resource type="PackedScene" uid="uid://db7ta348ev6ut" path="res://scenes/components/hurtbox/hurtbox.tscn" id="3_f5kw6"]
 [ext_resource type="AudioStream" uid="uid://byshbiitfefqy" path="res://assets/sfx/69_Enemy_death_01.wav" id="3_iqsfu"]

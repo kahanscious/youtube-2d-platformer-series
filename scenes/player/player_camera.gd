@@ -34,7 +34,6 @@ func setup_camera_limits() -> void:
 
 	while current_node:
 		if current_node is Level:
-			print(current_node)
 			level = current_node
 			break
 		current_node = current_node.get_parent()
