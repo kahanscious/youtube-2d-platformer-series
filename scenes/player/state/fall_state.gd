@@ -3,9 +3,9 @@ class_name FallState extends State
 @onready var idle_state: IdleState = $"../IdleState"
 @onready var run_state: RunState = $"../RunState"
 @onready var knockback_state: KnockbackState = $"../KnockbackState"
+@onready var jump_state: JumpState = $"../JumpState"
 
 
-# what happens when we enter the state
 func enter() -> void:
 	player.animation_player.play("fall")
 
@@ -14,12 +14,10 @@ func exit() -> void:
 	pass
 
 
-# called every frame during _process
 func process(_delta: float) -> State:
 	return null
 
 
-# called every physics frame during _physics_process
 func physics(_delta: float) -> State:
 	if player.direction:
 		player.velocity.x = lerp(
@@ -33,13 +31,16 @@ func physics(_delta: float) -> State:
 			return idle_state
 		else:
 			return run_state
-			
+
 	if player.is_knocked_back:
 		return knockback_state
-		
+
 	return null
 
 
-# called when input events occur
-func unhandled_input(_event: InputEvent) -> State:
+func unhandled_input(event: InputEvent) -> State:
+	if event.is_action_pressed("jump"):
+		if player.has_double_jump and player.can_double_jump and not player.is_on_floor():
+			player.can_double_jump = false
+			return jump_state
 	return null

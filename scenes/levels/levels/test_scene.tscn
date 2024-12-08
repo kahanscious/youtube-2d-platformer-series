@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dy8n2m62igt4q"]
+[gd_scene load_steps=12 format=4 uid="uid://dy8n2m62igt4q"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ggwc1"]
 [ext_resource type="Texture2D" uid="uid://btbtiqf7qu4jm" path="res://assets/backgrounds/v1/skyline-a.png" id="2_brco0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://214jyboj247s" path="res://scenes/levels/death_boundary.tscn" id="8_h3g4j"]
 [ext_resource type="PackedScene" uid="uid://c4wgn32h7cceu" path="res://scenes/enemies/robocop/robocop.tscn" id="8_mraoh"]
 [ext_resource type="PackedScene" uid="uid://c1rgbgr7vb8xc" path="res://scenes/enemies/turret/turret.tscn" id="9_uombq"]
+[ext_resource type="PackedScene" uid="uid://ctjcvefaare83" path="res://scenes/collectibles/coin/coin.tscn" id="10_p2cc7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ptqv"]
 normal = Vector2(1, 0)
@@ -69,3 +70,6 @@ position = Vector2(261, 436)
 
 [node name="Turret" parent="." instance=ExtResource("9_uombq")]
 position = Vector2(548, 228)
+
+[node name="Coin" parent="." instance=ExtResource("10_p2cc7")]
+position = Vector2(82, 183)

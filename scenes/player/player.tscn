@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://beo7wxrsokinl"]
+[gd_scene load_steps=35 format=3 uid="uid://beo7wxrsokinl"]
 
 [ext_resource type="Texture2D" uid="uid://k1k6kd4nme10" path="res://assets/characters/main/male-spritesheet.png" id="1_crv5h"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sykx8"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://dpqrx07v1ar3u" path="res://assets/ui/health_bar/under.png" id="17_fwu0u"]
 [ext_resource type="Texture2D" uid="uid://dsfcx2ul2iqst" path="res://assets/ui/health_bar/over.png" id="18_rc62r"]
 [ext_resource type="Texture2D" uid="uid://bmx6ye1at85qf" path="res://assets/ui/health_bar/progress.png" id="19_my5ri"]
+[ext_resource type="Texture2D" uid="uid://otbaeovry4bv" path="res://assets/ui/xp_bar/under.png" id="20_hbdig"]
+[ext_resource type="Texture2D" uid="uid://d32o74yjy4eb7" path="res://assets/ui/xp_bar/over.png" id="21_q2xpg"]
+[ext_resource type="Texture2D" uid="uid://3fcab70xndu" path="res://assets/ui/xp_bar/progress.png" id="22_24gfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
 size = Vector2(11, 15)
@@ -286,5 +289,22 @@ value = 50.0
 texture_under = ExtResource("17_fwu0u")
 texture_over = ExtResource("18_rc62r")
 texture_progress = ExtResource("19_my5ri")
+
+[node name="XPCanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="XPBar" type="TextureProgressBar" parent="XPCanvasLayer"]
+offset_left = 5.5
+offset_top = 29.5
+offset_right = 37.5
+offset_bottom = 37.5
+rotation = -1.5708
+scale = Vector2(0.75, 0.75)
+value = 50.0
+rounded = true
+texture_under = ExtResource("20_hbdig")
+texture_over = ExtResource("21_q2xpg")
+texture_progress = ExtResource("22_24gfn")
 
 [node name="Bullets" type="Node" parent="."]

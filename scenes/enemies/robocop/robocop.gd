@@ -9,6 +9,8 @@ class_name Robocop extends Enemy
 @onready var death_audio: AudioStreamPlayer = $Audio/DeathAudio
 @onready var death_state: EnemyDeathState = $EnemyStateMachine/DeathState
 
+@export var xp_reward: float = 60.0
+
 @export_category("Physics")
 @export var speed: float = 50.0
 @export var gravity: float = 980.0
@@ -25,7 +27,7 @@ func _ready() -> void:
 	direction = -1.0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_direction()
 
 

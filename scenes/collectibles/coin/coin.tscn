@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctjcvefaare83"]
+
+[ext_resource type="Texture2D" uid="uid://dsaltpxabpvf0" path="res://assets/collectibles/items.png" id="1_3d7vc"]
+[ext_resource type="Script" path="res://scenes/collectibles/coin/coin.gd" id="1_o6jao"]
+[ext_resource type="AudioStream" uid="uid://cdfaybbwe6pnj" path="res://assets/sfx/coin-collected.wav" id="3_g04mw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q87ya"]
+size = Vector2(7, 9)
+
+[sub_resource type="Animation" id="Animation_7pc6g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_0q5pj"]
+resource_name = "default"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbwqo"]
+_data = {
+"RESET": SubResource("Animation_7pc6g"),
+"default": SubResource("Animation_0q5pj")
+}
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_o6jao")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("1_3d7vc")
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -4.5)
+shape = SubResource("RectangleShape2D_q87ya")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jbwqo")
+}
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g04mw")
