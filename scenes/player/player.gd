@@ -36,6 +36,7 @@ signal player_died
 
 var direction: float
 var is_knocked_back: bool = false
+var is_in_water: bool = false
 
 const GUN_MUZZLE_OFFSET: int = 26
 
@@ -96,6 +97,12 @@ func _on_take_damage(amount: int) -> void:
 
 func die() -> void:
 	player_died.emit()
+
+
+func heal(amount: int) -> void:
+	var health_before: int = current_health
+	current_health = mini(current_health + amount, max_health)
+	health_bar.value = current_health
 
 
 func manage_bullets() -> void:

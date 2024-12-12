@@ -200,6 +200,7 @@ height = 52.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 256
 script = ExtResource("1_sykx8")
+current_health = 3
 
 [node name="PlayerCamera" parent="." instance=ExtResource("2_let6a")]
 

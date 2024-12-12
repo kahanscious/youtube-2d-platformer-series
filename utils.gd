@@ -9,3 +9,5 @@ const SHAKE_CONFIGS: Dictionary = {
 	ShakeType.EXPLOSION: {"offset": Vector2(35.0, 30.0), "reduction": 2.5, "frequency": 30.0},
 	ShakeType.EARTHQUAKE: {"offset": Vector2(40.0, 35.0), "reduction": 1.5, "frequency": 45.0},
 }
+
+const MAIN_MENU_FILEPATH: String = "res://scenes/ui/main_menu/main_menu.tscn"

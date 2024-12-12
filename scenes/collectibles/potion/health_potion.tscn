@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://nlx74gs4rx42"]
+
+[ext_resource type="Script" path="res://scenes/collectibles/potion/health_potion.gd" id="1_he65h"]
+[ext_resource type="Texture2D" uid="uid://dhcux1leampg4" path="res://assets/ui/potion.png" id="2_mfxlm"]
+[ext_resource type="AudioStream" uid="uid://pm35xpjkgmvw" path="res://assets/sfx/02_Heal_02.wav" id="3_7v55g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3moyi"]
+atlas = ExtResource("2_mfxlm")
+region = Rect2(7, 5, 16, 21)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22lgr"]
+
+[node name="HealthPotion" type="Area2D"]
+script = ExtResource("1_he65h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -10)
+texture = SubResource("AtlasTexture_3moyi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -10)
+shape = SubResource("CircleShape2D_22lgr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7v55g")
