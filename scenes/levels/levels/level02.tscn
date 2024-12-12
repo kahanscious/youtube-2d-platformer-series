@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ctjcvefaare83" path="res://scenes/collectibles/coin/coin.tscn" id="4_w8jn5"]
 [ext_resource type="PackedScene" uid="uid://cm4n8da1v451c" path="res://scenes/player/player_spawn.tscn" id="6_itqgm"]
 [ext_resource type="PackedScene" uid="uid://nlx74gs4rx42" path="res://scenes/collectibles/potion/health_potion.tscn" id="6_q6bu7"]
-[ext_resource type="PackedScene" uid="uid://ft3iewvmq0gd" path="res://water_zone.tscn" id="8_e6xts"]
+[ext_resource type="PackedScene" uid="uid://ft3iewvmq0gd" path="res://scenes/levels/zones/water_zone.tscn" id="8_e6xts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5504i"]
 size = Vector2(157, 37)
