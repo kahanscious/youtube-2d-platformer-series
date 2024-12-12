@@ -1,13 +1,12 @@
 extends CanvasLayer
 
 var paused: bool = false
-const MAIN_MENU_FILEPATH: String = "res://scenes/ui/main_menu/main_menu.tscn"
 
 
 func _process(_delta: float) -> void:
 	if (
 		Input.is_action_just_pressed("pause")
-		and get_tree().current_scene.scene_file_path != MAIN_MENU_FILEPATH
+		and get_tree().current_scene.scene_file_path != Utils.MAIN_MENU_FILEPATH
 	):
 		handle_pause()
 

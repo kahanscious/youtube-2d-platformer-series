@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dsaltpxabpvf0" path="res://assets/collectibles/items.png" id="1_3d7vc"]
 [ext_resource type="Script" path="res://scenes/collectibles/coin/coin.gd" id="1_o6jao"]
-[ext_resource type="AudioStream" uid="uid://cdfaybbwe6pnj" path="res://assets/sfx/coin-collected.wav" id="3_g04mw"]
+[ext_resource type="AudioStream" uid="uid://ca26jljjwopx2" path="res://assets/sfx/coin-collected.wav" id="3_g04mw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q87ya"]
-size = Vector2(7, 9)
+size = Vector2(13, 14)
 
 [sub_resource type="Animation" id="Animation_7pc6g"]
 length = 0.001
@@ -47,18 +47,19 @@ _data = {
 }
 
 [node name="Coin" type="Area2D"]
+position = Vector2(0, 6)
 script = ExtResource("1_o6jao")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5)
-scale = Vector2(1.32, 1.32)
+position = Vector2(2, -14)
+scale = Vector2(2.75, 2)
 texture = ExtResource("1_3d7vc")
 hframes = 4
 vframes = 4
 frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -4.5)
+position = Vector2(0.5, -13)
 shape = SubResource("RectangleShape2D_q87ya")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -7,10 +7,10 @@ class_name Coin extends Collectible
 
 
 func collect(player: Player) -> void:
+	CoinManager.add_coins(1)
 	XPManager.add_xp(xp_value, player)
 	super.collect(player)
 	audio.play()
 
 	await audio.finished
-
 	queue_free()

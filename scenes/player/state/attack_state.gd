@@ -47,7 +47,7 @@ func physics(_delta: float) -> State:
 func unhandled_input(event: InputEvent) -> State:
 	if event.is_action_pressed("jump") and player.is_on_floor():
 		return jump_state
-	if event.is_action_pressed("crouch") and player.is_on_floor():
+	if event.is_action_pressed("crouch") and player.is_on_floor() and not player.is_in_water:
 		return crouch_state
 	return null
 

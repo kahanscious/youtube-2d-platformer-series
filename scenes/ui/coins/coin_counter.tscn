@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://mqtfc51yeixo"]
+
+[ext_resource type="Script" path="res://scenes/ui/coins/coin_counter.gd" id="1_fw0sb"]
+[ext_resource type="Texture2D" uid="uid://dsaltpxabpvf0" path="res://assets/collectibles/items.png" id="2_8jhg3"]
+[ext_resource type="Theme" uid="uid://yub1u2awvjna" path="res://scenes/ui/ui_theme.tres" id="3_sgh1b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkdw8"]
+atlas = ExtResource("2_8jhg3")
+region = Rect2(16, 16, 16, 16)
+
+[node name="CoinCounter" type="CanvasLayer"]
+script = ExtResource("1_fw0sb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_right = 34.0
+offset_bottom = 16.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mkdw8")
+
+[node name="Count" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_sgh1b")
+theme_override_font_sizes/font_size = 8
+text = "COINS"

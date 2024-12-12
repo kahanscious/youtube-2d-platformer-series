@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://ps1tqg65ytk8"]
+[gd_scene load_steps=10 format=4 uid="uid://ps1tqg65ytk8"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_owwbf"]
 [ext_resource type="Texture2D" uid="uid://dumu0ydm4gyrc" path="res://assets/backgrounds/caves/background.png" id="2_3dp6f"]
 [ext_resource type="Texture2D" uid="uid://bwwg1jf5lm63u" path="res://assets/backgrounds/caves/middleground.png" id="3_5mr25"]
 [ext_resource type="PackedScene" uid="uid://beubvxvthope0" path="res://scenes/tilemaps/caves.tscn" id="4_5dwhw"]
+[ext_resource type="PackedScene" uid="uid://ctjcvefaare83" path="res://scenes/collectibles/coin/coin.tscn" id="4_w8jn5"]
 [ext_resource type="PackedScene" uid="uid://cm4n8da1v451c" path="res://scenes/player/player_spawn.tscn" id="6_itqgm"]
+[ext_resource type="PackedScene" uid="uid://nlx74gs4rx42" path="res://scenes/collectibles/potion/health_potion.tscn" id="6_q6bu7"]
+[ext_resource type="PackedScene" uid="uid://ft3iewvmq0gd" path="res://scenes/levels/zones/water_zone.tscn" id="8_e6xts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5504i"]
+size = Vector2(157, 37)
 
 [node name="Level02" type="Node2D"]
 script = ExtResource("1_owwbf")
@@ -39,4 +45,25 @@ tile_map_data = PackedByteArray("AAAAAA8AAAAGAAYAAAAAABAAAAAGAAcAAAABAA8AAAAGAAY
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("6_itqgm")]
 unique_name_in_owner = true
-position = Vector2(29, 196)
+position = Vector2(36, 217)
+
+[node name="HealthPotion" parent="." instance=ExtResource("6_q6bu7")]
+position = Vector2(447, 224)
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("4_w8jn5")]
+position = Vector2(243, 200)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("4_w8jn5")]
+position = Vector2(278, 202)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("4_w8jn5")]
+position = Vector2(260, 186)
+
+[node name="WaterZone" parent="." instance=ExtResource("8_e6xts")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterZone"]
+position = Vector2(431.5, 272.5)
+shape = SubResource("RectangleShape2D_5504i")
+debug_color = Color(0.639985, 0.524894, 0, 0.42)
