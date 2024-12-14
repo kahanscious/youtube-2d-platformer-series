@@ -26,6 +26,7 @@ DeathMenu="*res://scenes/ui/death_menu/death_menu.tscn"
 XPManager="*res://_globals/xp_manager.gd"
 CoinManager="*res://_globals/coin_manager.gd"
 CoinCounter="*res://scenes/ui/coins/coin_counter.tscn"
+SettingsManager="*res://_globals/settings_manager.gd"
 
 [display]
 

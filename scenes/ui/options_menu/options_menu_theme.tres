@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://baxc7bnuvw1w1"]
+
+[ext_resource type="FontFile" uid="uid://bxolukbsbfipq" path="res://assets/fonts/Kenney Pixel.ttf" id="1_j8ouk"]
+[ext_resource type="Texture2D" uid="uid://dd7topio112dj" path="res://assets/ui/ui-pixel.png" id="1_pnjsj"]
+[ext_resource type="FontFile" uid="uid://bkithx7vvk64w" path="res://assets/fonts/bitbybit_ [Font].ttf" id="2_s7wh7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65v1f"]
+atlas = ExtResource("1_pnjsj")
+region = Rect2(72, 90, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohswe"]
+atlas = ExtResource("1_pnjsj")
+region = Rect2(90, 90, 16, 16)
+
+[resource]
+default_font = ExtResource("1_j8ouk")
+default_font_size = 12
+HSlider/icons/grabber = SubResource("AtlasTexture_65v1f")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_ohswe")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("2_s7wh7")

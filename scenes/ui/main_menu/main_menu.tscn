@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dul1bbxb54ltv"]
+[gd_scene load_steps=7 format=3 uid="uid://dul1bbxb54ltv"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_menu.gd" id="1_uof47"]
 [ext_resource type="Texture2D" uid="uid://dm8q4jyuicg0o" path="res://assets/backgrounds/v1/start-menu-background.PNG" id="2_7job6"]
 [ext_resource type="FontFile" uid="uid://bkithx7vvk64w" path="res://assets/fonts/bitbybit_ [Font].ttf" id="3_6d7ky"]
 [ext_resource type="Theme" uid="uid://yub1u2awvjna" path="res://scenes/ui/ui_theme.tres" id="4_v8dbq"]
+[ext_resource type="PackedScene" uid="uid://l7bnphtx3umy" path="res://scenes/ui/options_menu/options_menu.tscn" id="5_mab2a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y08hq"]
 texture = ExtResource("2_7job6")
@@ -53,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -88.0
-offset_right = 50.0
-offset_bottom = -38.0
+offset_left = -61.0
+offset_top = -124.0
+offset_right = 61.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
@@ -67,10 +68,19 @@ layout_mode = 2
 theme = ExtResource("4_v8dbq")
 text = "START"
 
+[node name="OptionsButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme = ExtResource("4_v8dbq")
+text = "OPTIONS"
+
 [node name="ExitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("4_v8dbq")
 text = "EXIT"
 
+[node name="OptionsMenu" parent="." instance=ExtResource("5_mab2a")]
+layout_mode = 1
+
 [connection signal="pressed" from="ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
