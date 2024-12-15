@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1sty770ju35q"]
+[gd_scene load_steps=4 format=3 uid="uid://b1sty770ju35q"]
 
 [ext_resource type="Script" path="res://scenes/ui/pause_menu/pause_menu.gd" id="1_lic0s"]
 [ext_resource type="Theme" uid="uid://yub1u2awvjna" path="res://scenes/ui/ui_theme.tres" id="2_bej6g"]
+[ext_resource type="PackedScene" uid="uid://l7bnphtx3umy" path="res://scenes/ui/options_menu/options_menu.tscn" id="3_1q2j2"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -14,7 +15,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="ButtonContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,15 +30,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="ResumeButton" type="Button" parent="Control/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("2_bej6g")
 text = "RESUME"
 
-[node name="QuitButton" type="Button" parent="Control/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+theme = ExtResource("2_bej6g")
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="Control/ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("2_bej6g")
 text = "QUIT"
 
-[connection signal="pressed" from="Control/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="OptionsMenu" parent="." instance=ExtResource("3_1q2j2")]
+visible = false
+
+[connection signal="pressed" from="Control/ButtonContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Control/ButtonContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
