@@ -17,13 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LevelManager="*res://_globals/level_manager.gd"
-AudioManager="*res://_globals/audio_manager.gd"
 PlayerManager="*res://_globals/player_manager.gd"
+LevelManager="*res://_globals/level_manager.gd"
+InventoryManager="*res://_globals/inventory_manager.gd"
+AudioManager="*res://_globals/audio_manager.gd"
 PauseMenu="*res://scenes/ui/pause_menu/pause_menu.tscn"
 SceneTransition="*res://scenes/levels/scene_transition.tscn"
 DeathMenu="*res://scenes/ui/death_menu/death_menu.tscn"
-InventoryManager="*res://_globals/inventory_manager.gd"
 XPManager="*res://_globals/xp_manager.gd"
 CoinManager="*res://_globals/coin_manager.gd"
 CoinCounter="*res://scenes/ui/coins/coin_counter.tscn"
@@ -73,6 +73,26 @@ attack={
 pause={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+slot1={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
+]
+}
+slot2={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+slot3={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
+]
+}
+slot4={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":52,"key_label":0,"unicode":52,"location":0,"echo":false,"script":null)
 ]
 }
 
