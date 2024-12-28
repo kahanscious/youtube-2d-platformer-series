@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqgjhu0tt5cvf"]
+
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory_interface.gd" id="1_ar38k"]
+
+[node name="InventoryInterface" type="CanvasLayer"]
+script = ExtResource("1_ar38k")
+
+[node name="SlotsContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(24, 24)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -30.0
+offset_right = 12.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 4

@@ -50,6 +50,9 @@ position = Vector2(36, 217)
 [node name="HealthPotion" parent="." instance=ExtResource("6_q6bu7")]
 position = Vector2(447, 224)
 
+[node name="HealthPotion2" parent="." instance=ExtResource("6_q6bu7")]
+position = Vector2(624, 251)
+
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_w8jn5")]
