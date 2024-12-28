@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjmd7jmyk70xe"]
+[gd_scene load_steps=6 format=3 uid="uid://bjmd7jmyk70xe"]
 
 [ext_resource type="Script" path="res://scenes/ui/inventory/inventory_slot.gd" id="1_cj17g"]
 [ext_resource type="Texture2D" uid="uid://dd7topio112dj" path="res://assets/ui/ui-pixel.png" id="1_nqvst"]
+[ext_resource type="FontFile" uid="uid://caysms6a3kyb7" path="res://assets/fonts/Bitty.ttf" id="3_2gycg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ditgd"]
 atlas = ExtResource("1_nqvst")
@@ -18,6 +19,7 @@ texture_margin_bottom = 1.0
 custom_minimum_size = Vector2(24, 24)
 offset_right = 24.0
 offset_bottom = 24.0
+focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_4gqdt")
 script = ExtResource("1_cj17g")
 
@@ -33,6 +35,7 @@ offset_right = -6.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 expand_mode = 3
 stretch_mode = 5
 
@@ -49,8 +52,22 @@ offset_right = -2.0
 offset_bottom = -1.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
+theme_override_colors/font_color = Color(0.246609, 0.468349, 1, 1)
+theme_override_fonts/font = ExtResource("3_2gycg")
+theme_override_font_sizes/font_size = 16
 text = "2"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HotkeyLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 7.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.340339, 0.340339, 0.340339, 1)
+theme_override_fonts/font = ExtResource("3_2gycg")
+theme_override_font_sizes/font_size = 16
+text = "1"
 horizontal_alignment = 2
 vertical_alignment = 2
