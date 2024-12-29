@@ -51,3 +51,14 @@ func can_stack_with(slot_item: InventoryItem, item_data: ItemData) -> bool:
 		slot_item.item_data.id == item_data.id
 		and slot_item.quantity < slot_item.item_data.max_stack_size
 	)
+
+
+func swap_items(from_slot: int, to_slot: int) -> void:
+	if !inventory.has(from_slot) or !inventory.has(to_slot):
+		return
+
+	var temp = inventory[to_slot]
+	inventory[to_slot] = inventory[from_slot]
+	inventory[from_slot] = temp
+
+	inventory_updated.emit(inventory)

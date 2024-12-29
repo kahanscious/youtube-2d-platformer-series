@@ -19,3 +19,11 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 4
+
+[node name="DraggedItem" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+expand_mode = 3
+stretch_mode = 5
