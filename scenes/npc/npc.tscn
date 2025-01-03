@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2padfn1d7kvm"]
+
+[ext_resource type="Script" path="res://scenes/npc/npc.gd" id="1_q8e8h"]
+[ext_resource type="FontFile" uid="uid://caysms6a3kyb7" path="res://assets/fonts/Bitty.ttf" id="2_65378"]
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_q8e8h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InteractionLabel" type="Label" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(200, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_65378")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
