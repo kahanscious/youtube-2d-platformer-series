@@ -11,7 +11,7 @@ script = ExtResource("1_gfo0e")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(400, 150)
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

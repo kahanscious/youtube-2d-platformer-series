@@ -8,7 +8,7 @@ signal dialogue_finished
 @onready var panel: Panel = $Panel
 
 const CHAR_READ_RATE: float = 0.05
-const PUNCTUATION_PAUSE: float = 0.02
+const PUNCTUATION_PAUSE: float = 0.2
 
 var _current_dialogue: Array[Dictionary] = []
 var _current_page_index: int = 0
