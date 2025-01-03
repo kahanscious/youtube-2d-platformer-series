@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://kbr4bdfmbi7o"]
+
+[ext_resource type="FontFile" uid="uid://caysms6a3kyb7" path="res://assets/fonts/Bitty.ttf" id="1_5jrdm"]
+[ext_resource type="Script" path="res://scenes/ui/dialogue/dialogue_ui.gd" id="1_gfo0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb36a"]
+bg_color = Color(0.13, 0.13, 0.13, 0.66)
+
+[node name="DialogueUi" type="CanvasLayer"]
+script = ExtResource("1_gfo0e")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 150)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eb36a")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5jrdm")
+theme_override_font_sizes/font_size = 32
+text = "NPC Name"
+
+[node name="DialogueLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5jrdm")
+theme_override_font_sizes/font_size = 16
+text = "This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. "
+autowrap_mode = 2
+
+[node name="ContinueLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5jrdm")
+theme_override_font_sizes/font_size = 16
+text = "Press E to continue..."
+horizontal_alignment = 2

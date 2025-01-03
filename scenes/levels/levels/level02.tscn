@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ps1tqg65ytk8"]
+[gd_scene load_steps=11 format=4 uid="uid://ps1tqg65ytk8"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_owwbf"]
 [ext_resource type="Texture2D" uid="uid://dumu0ydm4gyrc" path="res://assets/backgrounds/caves/background.png" id="2_3dp6f"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4n8da1v451c" path="res://scenes/player/player_spawn.tscn" id="6_itqgm"]
 [ext_resource type="PackedScene" uid="uid://nlx74gs4rx42" path="res://scenes/collectibles/potion/health_potion.tscn" id="6_q6bu7"]
 [ext_resource type="PackedScene" uid="uid://ft3iewvmq0gd" path="res://scenes/levels/zones/water_zone.tscn" id="8_e6xts"]
+[ext_resource type="PackedScene" uid="uid://drj77cfwikm4t" path="res://scenes/npc/guide_npc.tscn" id="9_rlhg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5504i"]
 size = Vector2(157, 37)
@@ -51,7 +52,7 @@ position = Vector2(36, 217)
 position = Vector2(447, 224)
 
 [node name="HealthPotion2" parent="." instance=ExtResource("6_q6bu7")]
-position = Vector2(624, 251)
+position = Vector2(573, 253)
 
 [node name="Coins" type="Node" parent="."]
 
@@ -70,3 +71,6 @@ position = Vector2(260, 186)
 position = Vector2(431.5, 272.5)
 shape = SubResource("RectangleShape2D_5504i")
 debug_color = Color(0.639985, 0.524894, 0, 0.42)
+
+[node name="GuideNPC" parent="." instance=ExtResource("9_rlhg3")]
+position = Vector2(624, 257)
