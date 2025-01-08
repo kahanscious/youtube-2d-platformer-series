@@ -6,10 +6,12 @@ class_name NPC extends CharacterBody2D
 
 @export var npc_name: String = "NPC"
 @export var interaction_text: String = "Press E to talk"
+@export var portrait: Texture
 
 var direction: int = -1
 var interactable: bool = true
 var dialogue_ui: DialogueUI
+var _can_interact: bool = false
 
 
 func _ready() -> void:
@@ -31,7 +33,7 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not interactable:
+	if not interactable or not _can_interact:
 		return
 
 	if event.is_action_pressed("interact"):
@@ -43,6 +45,7 @@ func _on_interaction_area_entered(body: Node2D) -> void:
 	if not body is Player or not interactable:
 		return
 
+	_can_interact = true
 	interaction_label.text = interaction_text
 
 	var viewport_rect: Rect2 = get_viewport_rect()
@@ -62,6 +65,7 @@ func _on_interaction_area_entered(body: Node2D) -> void:
 
 func _on_interaction_area_exited(body: Node2D) -> void:
 	if body is Player:
+		_can_interact = false
 		interaction_label.hide()
 
 
@@ -89,5 +93,6 @@ func _on_dialogue_finished() -> void:
 
 func get_dialogue_content() -> Array[Dictionary]:
 	return [
-		{"name": npc_name, "text": "Hello there!"}, {"name": npc_name, "text": "I'm a basic NPC."}
+		{"name": npc_name, "text": "Hello there!", "portrait": portrait},
+		{"name": npc_name, "text": "I'm a basic NPC.", "portrait": portrait}
 	]

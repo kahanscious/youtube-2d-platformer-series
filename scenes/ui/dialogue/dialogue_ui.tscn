@@ -1,29 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://kbr4bdfmbi7o"]
+[gd_scene load_steps=15 format=3 uid="uid://kbr4bdfmbi7o"]
 
 [ext_resource type="FontFile" uid="uid://caysms6a3kyb7" path="res://assets/fonts/Bitty.ttf" id="1_5jrdm"]
 [ext_resource type="Script" path="res://scenes/ui/dialogue/dialogue_ui.gd" id="1_gfo0e"]
+[ext_resource type="Texture2D" uid="uid://dd7topio112dj" path="res://assets/ui/ui-pixel.png" id="2_6nol2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb36a"]
-bg_color = Color(0.13, 0.13, 0.13, 0.66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w1ey"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(252, 378, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2022"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(252, 360, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gudv0"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(252, 396, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv40i"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(234, 378, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7fhn"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(270, 378, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa1p7"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(234, 360, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4x50"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(270, 360, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_airgh"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(234, 396, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlhkn"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(270, 396, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20ol6"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(198, 432, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_087xv"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(162, 396, 16, 16)
 
 [node name="DialogueUi" type="CanvasLayer"]
 script = ExtResource("1_gfo0e")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="MainContainer" type="Control" parent="."]
 custom_minimum_size = Vector2(400, 150)
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = -150.0
+offset_top = -160.0
 offset_right = 200.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eb36a")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="Background" type="Control" parent="MainContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,28 +74,187 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-custom_minimum_size = Vector2(390, 0)
+[node name="NinePatchContainer" type="Control" parent="MainContainer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MiddleMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_1w1ey")
+stretch_mode = 1
+
+[node name="TopMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_l2022")
+stretch_mode = 1
+
+[node name="BottomMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_gudv0")
+stretch_mode = 1
+
+[node name="MiddleLeft" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cv40i")
+stretch_mode = 1
+
+[node name="MiddleRight" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -75.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_s7fhn")
+stretch_mode = 1
+
+[node name="TopLeft" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_pa1p7")
+
+[node name="TopRight" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_y4x50")
+
+[node name="BottomLeft" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_airgh")
+
+[node name="BottomRight" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_hlhkn")
+
+[node name="ContentContainer" type="MarginContainer" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -6.0
+offset_right = 36.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 24
+
+[node name="DialogueContent" type="HBoxContainer" parent="MainContainer/ContentContainer"]
 layout_mode = 2
+mouse_filter = 0
+
+[node name="TextContainer" type="VBoxContainer" parent="MainContainer/ContentContainer/DialogueContent"]
+layout_mode = 2
+mouse_filter = 0
 theme_override_constants/separation = 10
 
-[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="MainContainer/ContentContainer/DialogueContent/TextContainer"]
 layout_mode = 2
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("1_5jrdm")
 theme_override_font_sizes/font_size = 32
 text = "NPC Name"
 
-[node name="DialogueLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="DialogueLabel" type="Label" parent="MainContainer/ContentContainer/DialogueContent/TextContainer"]
 custom_minimum_size = Vector2(370, 90)
 layout_mode = 2
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("1_5jrdm")
 theme_override_font_sizes/font_size = 16
 text = "This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. This is some example text. "
 autowrap_mode = 2
 
-[node name="ContinueLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="FooterContainer" type="MarginContainer" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="ContinueContainer" type="HBoxContainer" parent="MainContainer/ContentContainer/FooterContainer"]
+layout_mode = 2
+
+[node name="ContinueLabel" type="Label" parent="MainContainer/ContentContainer/FooterContainer/ContinueContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_5jrdm")
 theme_override_font_sizes/font_size = 16
 text = "Press E to continue..."
 horizontal_alignment = 2
+
+[node name="ContinueSprite" type="TextureRect" parent="MainContainer/ContentContainer/FooterContainer/ContinueContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_20ol6")
+
+[node name="PortraitContainer" type="PanelContainer" parent="MainContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PortraitFrame" type="TextureRect" parent="MainContainer/PortraitContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 0
+texture = SubResource("AtlasTexture_087xv")
+stretch_mode = 5
