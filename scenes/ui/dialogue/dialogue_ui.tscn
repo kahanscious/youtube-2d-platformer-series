@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/ui/dialogue/dialogue_ui.gd" id="1_gfo0e"]
 [ext_resource type="Texture2D" uid="uid://dd7topio112dj" path="res://assets/ui/ui-pixel.png" id="2_6nol2"]
 
+<<<<<<< Updated upstream
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w1ey"]
 atlas = ExtResource("2_6nol2")
 region = Rect2(252, 378, 16, 16)
@@ -47,6 +48,51 @@ region = Rect2(198, 432, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_087xv"]
 atlas = ExtResource("2_6nol2")
 region = Rect2(162, 396, 16, 16)
+=======
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocin5"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(72, 342, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s2bs"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(72, 324, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ocks"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(72, 378, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2xoy"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(54, 342, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvyf1"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(90, 342, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fgpb"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(54, 324, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aw2w"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(90, 324, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsg1v"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(54, 378, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24jhx"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(90, 378, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o34er"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(36, 432, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8cqj"]
+atlas = ExtResource("2_6nol2")
+region = Rect2(0, 396, 16, 16)
+>>>>>>> Stashed changes
 
 [node name="DialogueUi" type="CanvasLayer"]
 script = ExtResource("1_gfo0e")
@@ -54,7 +100,10 @@ script = ExtResource("1_gfo0e")
 [node name="MainContainer" type="Control" parent="."]
 custom_minimum_size = Vector2(400, 150)
 layout_mode = 3
+<<<<<<< Updated upstream
 anchors_preset = 7
+=======
+>>>>>>> Stashed changes
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -82,6 +131,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+<<<<<<< Updated upstream
 
 [node name="MiddleMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
 layout_mode = 1
@@ -209,6 +259,128 @@ theme_override_constants/separation = 10
 [node name="NameLabel" type="Label" parent="MainContainer/ContentContainer/DialogueContent/TextContainer"]
 layout_mode = 2
 mouse_filter = 0
+=======
+
+[node name="MiddleMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ocin5")
+
+[node name="TopMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_2s2bs")
+stretch_mode = 1
+
+[node name="BottomMiddle" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_5ocks")
+stretch_mode = 1
+
+[node name="MiddleLeft" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 16.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_j2xoy")
+stretch_mode = 1
+
+[node name="MiddleRight" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_yvyf1")
+stretch_mode = 1
+
+[node name="TopLeft" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_4fgpb")
+
+[node name="TopRight" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_8aw2w")
+
+[node name="BottomLeft" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_wsg1v")
+
+[node name="BottomRight" type="TextureRect" parent="MainContainer/Background/NinePatchContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_24jhx")
+
+[node name="ContentContainer" type="MarginContainer" parent="MainContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = -40
+
+[node name="DialogueContent" type="HBoxContainer" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="TextContainer" type="VBoxContainer" parent="MainContainer/ContentContainer/DialogueContent"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="NameLabel" type="Label" parent="MainContainer/ContentContainer/DialogueContent/TextContainer"]
+layout_mode = 2
+mouse_filter = 0
+>>>>>>> Stashed changes
 theme_override_fonts/font = ExtResource("1_5jrdm")
 theme_override_font_sizes/font_size = 32
 text = "NPC Name"
@@ -223,6 +395,7 @@ text = "This is some example text. This is some example text. This is some examp
 autowrap_mode = 2
 
 [node name="FooterContainer" type="MarginContainer" parent="MainContainer/ContentContainer"]
+<<<<<<< Updated upstream
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -234,7 +407,21 @@ theme_override_constants/margin_right = 25
 layout_mode = 2
 
 [node name="ContinueLabel" type="Label" parent="MainContainer/ContentContainer/FooterContainer/ContinueContainer"]
+=======
+>>>>>>> Stashed changes
 layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 0
+theme_override_constants/margin_right = 20
+
+[node name="ContinueContainer" type="HBoxContainer" parent="MainContainer/ContentContainer/FooterContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 0
+
+[node name="ContinueLabel" type="Label" parent="MainContainer/ContentContainer/FooterContainer/ContinueContainer"]
+layout_mode = 2
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("1_5jrdm")
 theme_override_font_sizes/font_size = 16
 text = "Press E to continue..."
@@ -242,6 +429,7 @@ horizontal_alignment = 2
 
 [node name="ContinueSprite" type="TextureRect" parent="MainContainer/ContentContainer/FooterContainer/ContinueContainer"]
 layout_mode = 2
+<<<<<<< Updated upstream
 texture = SubResource("AtlasTexture_20ol6")
 
 [node name="PortraitContainer" type="PanelContainer" parent="MainContainer"]
@@ -257,4 +445,21 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 0
 texture = SubResource("AtlasTexture_087xv")
+=======
+mouse_filter = 0
+texture = SubResource("AtlasTexture_o34er")
+
+[node name="PortraitContainer" type="PanelContainer" parent="MainContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = -37.0
+offset_top = -36.0
+offset_right = 43.0
+offset_bottom = 44.0
+
+[node name="PortraitFrame" type="TextureRect" parent="MainContainer/PortraitContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_w8cqj")
+>>>>>>> Stashed changes
 stretch_mode = 5

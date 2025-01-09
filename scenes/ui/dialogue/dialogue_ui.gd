@@ -4,10 +4,17 @@ signal dialogue_finished
 
 @onready var main_container: Control = $MainContainer
 @onready
+<<<<<<< Updated upstream
 var dialogue_label: Label = $MainContainer/ContentContainer/DialogueContent/TextContainer/DialogueLabel
 @onready
 var name_label: Label = $MainContainer/ContentContainer/DialogueContent/TextContainer/NameLabel
 @onready
+=======
+var name_label: Label = $MainContainer/ContentContainer/DialogueContent/TextContainer/NameLabel
+@onready
+var dialogue_label: Label = $MainContainer/ContentContainer/DialogueContent/TextContainer/DialogueLabel
+@onready
+>>>>>>> Stashed changes
 var continue_container: HBoxContainer = $MainContainer/ContentContainer/FooterContainer/ContinueContainer
 @onready
 var continue_sprite: TextureRect = $MainContainer/ContentContainer/FooterContainer/ContinueContainer/ContinueSprite
@@ -53,6 +60,10 @@ func start_dialogue(dialogue_data: Array[Dictionary]) -> void:
 	_is_dialogue_active = true
 
 	get_tree().paused = true
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	main_container.show()
 	_show_current_page()
 
@@ -60,7 +71,10 @@ func start_dialogue(dialogue_data: Array[Dictionary]) -> void:
 func hide_dialogue() -> void:
 	main_container.hide()
 	_stop_continue_blink()
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	_is_dialogue_active = false
 	_current_dialogue.clear()
 
@@ -69,6 +83,10 @@ func hide_dialogue() -> void:
 		_reveal_timer = null
 
 	get_tree().paused = false
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	dialogue_finished.emit()
 
 
@@ -79,7 +97,10 @@ func _show_current_page() -> void:
 	dialogue_label.text = ""
 	continue_container.hide()
 
+<<<<<<< Updated upstream
 	# Set portrait if provided
+=======
+>>>>>>> Stashed changes
 	if page.has("portrait") and page.portrait != null:
 		portrait_frame.texture = page.portrait
 		portrait_frame.show()
@@ -135,6 +156,10 @@ func _on_reveal_timer_timeout() -> void:
 func _finish_text_reveal() -> void:
 	dialogue_label.text = _current_dialogue[_current_page_index].get("text", "")
 	_is_text_revealing = false
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 	continue_container.show()
 
 
@@ -145,3 +170,28 @@ func _try_advance_dialogue() -> void:
 		hide_dialogue()
 	else:
 		_show_current_page()
+<<<<<<< Updated upstream
+=======
+
+
+func _on_reveal_timer_timeout() -> void:
+	if _reveal_timer:
+		_reveal_timer.timeout.disconnect(_on_reveal_timer_timeout)
+		_reveal_timer = null
+
+
+func _start_continue_blink() -> void:
+	if _continue_tween:
+		_continue_tween.kill()
+
+	_continue_tween = create_tween().set_loops()
+	_continue_tween.tween_property(continue_sprite, "modulate:a", 0.2, 0.5)
+	_continue_tween.tween_property(continue_sprite, "modulate:a", 1.0, 0.5)
+
+
+func _stop_continue_blink() -> void:
+	if _continue_tween:
+		_continue_tween.kill()
+		_continue_tween = null
+	continue_sprite.modulate.a = 1.0
+>>>>>>> Stashed changes
