@@ -12,7 +12,6 @@ var direction: int = -1
 var interactable: bool = true
 var _can_interact: bool = false
 var dialogue_ui: DialogueUI
-var _can_interact: bool = false
 
 
 func _ready() -> void:
@@ -47,10 +46,6 @@ func _on_interaction_area_entered(body: Node2D) -> void:
 		return
 
 	_can_interact = true
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 	interaction_label.text = interaction_text
 
 	var viewport_rect: Rect2 = get_viewport_rect()

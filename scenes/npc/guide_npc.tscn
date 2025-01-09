@@ -5,13 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://b2ccklyi6flkw" path="res://assets/characters/main/npc.png" id="2_yecad"]
 [ext_resource type="FontFile" uid="uid://caysms6a3kyb7" path="res://assets/fonts/Bitty.ttf" id="3_wkioo"]
 
-<<<<<<< Updated upstream
-=======
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsxnd"]
 atlas = ExtResource("2_gs6mb")
 region = Rect2(540, 162, 52, 52)
 
->>>>>>> Stashed changes
 [sub_resource type="Animation" id="Animation_atin1"]
 length = 0.001
 tracks/0/type = "value"
