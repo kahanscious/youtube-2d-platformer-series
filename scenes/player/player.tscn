@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://3fcab70xndu" path="res://assets/ui/xp_bar/progress.png" id="22_24gfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l37s7"]
-size = Vector2(11, 15)
+size = Vector2(11, 56)
 
 [sub_resource type="Animation" id="Animation_72of1"]
 length = 0.001
@@ -200,7 +200,9 @@ height = 52.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 256
 script = ExtResource("1_sykx8")
-current_health = 3
+has_double_jump = true
+max_health = 10
+current_health = 10
 
 [node name="PlayerCamera" parent="." instance=ExtResource("2_let6a")]
 
@@ -212,7 +214,7 @@ vframes = 6
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -7.5)
+position = Vector2(-1.5, -28)
 shape = SubResource("RectangleShape2D_l37s7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
