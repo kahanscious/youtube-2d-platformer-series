@@ -5,6 +5,9 @@ class_name PlayerCamera extends Camera2D
 @export var max_offset: Vector2 = Vector2(8.0, 6.0)
 @export_range(0.0, 100.0, 1.0) var shake_frequency: float = 45.0
 
+var reveal_tween: Tween
+var is_revealing_boss: bool = false
+
 var trauma: float = 0.0:
 	set(value):
 		trauma = clampf(value, 0.0, 1.0)
@@ -55,6 +58,7 @@ func setup_camera_limits() -> void:
 	limit_left = used_rect.position.x
 	limit_right = (used_rect.position.x + used_rect.size.x) * 16
 	limit_bottom = (used_rect.position.y + used_rect.size.y) * 16
+	limit_top = used_rect.position.y * 16
 
 
 func apply_shake() -> void:
@@ -77,3 +81,31 @@ func configure_shake(shake_type: Utils.ShakeType) -> void:
 	max_offset = config["offset"]
 	trauma_reduction = config["reduction"]
 	shake_frequency = config["frequency"]
+
+
+func reveal_boss(boss_node: Node2D) -> void:
+	if is_revealing_boss:
+		return
+
+	is_revealing_boss = true
+
+	if reveal_tween:
+		reveal_tween.kill()
+
+	reveal_tween = create_tween()
+	reveal_tween.set_trans(Tween.TRANS_SINE)
+	reveal_tween.set_ease(Tween.EASE_IN_OUT)
+
+	reveal_tween.tween_property(
+		self, "position", position + (boss_node.position - PlayerManager.player.position), 1.0
+	)
+
+	reveal_tween.tween_callback(func(): add_trauma(0.6))
+	reveal_tween.tween_interval(0.5)
+
+	reveal_tween.tween_property(self, "position", Vector2.ZERO, 0.8)
+	reveal_tween.tween_callback(end_boss_reveal)
+
+
+func end_boss_reveal() -> void:
+	is_revealing_boss = false
